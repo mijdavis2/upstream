@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="justify-content-centermy-1 row">
-      <b-form-fieldset horizontal label="Rows per page" class="col-6" :label-size="6">
-        <b-form-select :options="[{text:5,value:5},{text:10,value:10},{text:15,value:15}]" v-model="perPage">
-        </b-form-select>
-      </b-form-fieldset>
-
-      <b-form-fieldset horizontal label="Filter" class="col-6" :label-size="2">
-        <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
-      </b-form-fieldset>
-    </div>
     <b-table striped hover :items="items" :fields="fields" :current-page="currentPage" :per-page="perPage" :filter="filter">
       <template slot="station" scope="item">{{ item.value }}</template>
       <template slot="clock" scope="item">
@@ -20,19 +10,18 @@
         <input class="stream-input" type="number" v-model="item.value"></template>
       <template slot="spins" scope="item">
         <input class="stream-input" type="number" v-model="item.value"></template>
-      <template slot="timeSec" scope="item">
+      <template slot="timePerSec" scope="item">
         <input class="stream-input" type="number" v-model="item.value"></template>
       <template slot="readingComments" scope="item">
         <textarea v-model="item.value"></textarea></template>
     </b-table>
-
-    <div class="justify-content-center row my-1">
-      <b-pagination size="md" :total-rows="this.items.length" :per-page="perPage" v-model="currentPage"></b-pagination>
-    </div>
   </div>
 </template>
 
 <script>
+  const VAL_1 = 0.9604
+  const VAL_2 = 0.0312
+
   export default {
     data: () => ({
       currentPage: 1,
@@ -55,7 +44,7 @@
         spins: {
           label: 'Spins'
         },
-        timeSec: {
+        timePerSec: {
           label: 'Time, Sec'
         },
         readingComments: {
@@ -71,9 +60,44 @@
           tapeFt: 0,
           maxDepth: 0,
           spins: 0,
-          timeSec: 0,
-          readingComments: ''
+          timePerSec: 0,
+          readingComments: 'start bank'
         })
+        this.items.push({
+          station: 0,
+          clock: 0,
+          tapeFt: 0,
+          maxDepth: 0,
+          spins: 0,
+          timePerSec: 0,
+          readingComments: 'end bank'
+        })
+      }
+    },
+    methods: {
+      getFtPerSec (spins, timePerSec) {
+        if (!spins || !timePerSec) {
+          return 0
+        }
+        return VAL_1 * (spins / timePerSec) + VAL_2
+      },
+      getStationFt (currentTape, previousTape = 0) {
+        return currentTape - previousTape
+      },
+      getWidthFt (currentStationFt, previousStationFt, nextStationFt) {
+        return (currentStationFt - previousStationFt) + (nextStationFt - currentStationFt) / 2
+      },
+      getQ (ftPerSec, maxDepth) {
+        return ftPerSec * maxDepth
+      },
+      getQCol (q, widthFt) {
+        return q * widthFt
+      },
+      getPercentFlow (qCol, totalDischarge) {
+        if (totalDischarge === 0) {
+          return 0
+        }
+        return qCol / totalDischarge
       }
     }
   }
