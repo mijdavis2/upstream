@@ -1,0 +1,140 @@
+[
+  {
+    "station": 0,
+    "clock": "0",
+    "tapeFt": 1.1,
+    "maxDepth": 0,
+    "spins": 0,
+    "timeSec": 50,
+    "readingComments": "Start bank"
+  },
+  {
+    "station": 1,
+    "clock": "11:02",
+    "tapeFt": 2.7,
+    "maxDepth": 0.53,
+    "spins": 26,
+    "timeSec": 50.6
+  },
+  {
+    "station": 2,
+    "clock": "11:03",
+    "tapeFt": 4.3,
+    "maxDepth": 0.56,
+    "spins": 31,
+    "timeSec": 50.4
+  },
+  {
+    "station": 3,
+    "clock": "11:05",
+    "tapeFt": 5.9,
+    "maxDepth": 0.54,
+    "spins": 13,
+    "timeSec": 53.3
+  },
+  {
+    "station": 4,
+    "clock": "11:07",
+    "tapeFt": 7.5,
+    "maxDepth": 0.73,
+    "spins": 18,
+    "timeSec": 51.4
+  },
+  {
+    "station": 5,
+    "clock": "11:08",
+    "tapeFt": 9.1,
+    "maxDepth": 0.75,
+    "spins": 23,
+    "timeSec": 50
+  },
+  {
+    "station": 6,
+    "clock": "11:09",
+    "tapeFt": 10.7,
+    "maxDepth": 0.72,
+    "spins": 17,
+    "timeSec": 50.6
+  },
+  {
+    "station": 7,
+    "clock": "11:11",
+    "tapeFt": 12.3,
+    "maxDepth": 0.75,
+    "spins": 8,
+    "timeSec": 53.4
+  },
+  {
+    "station": 8,
+    "clock": "11:12",
+    "tapeFt": 13.9,
+    "maxDepth": 0.62,
+    "spins": 21,
+    "timeSec": 51.7
+  },
+  {
+    "station": 9,
+    "clock": "11:14",
+    "tapeFt": 15.5,
+    "maxDepth": 0.71,
+    "spins": 17,
+    "timeSec": 52.7
+  },
+  {
+    "station": 10,
+    "clock": "11:15",
+    "tapeFt": 17.1,
+    "maxDepth": 0.73,
+    "spins": 10,
+    "timeSec": 55.1
+  },
+  {
+    "station": 11,
+    "clock": "11:17",
+    "tapeFt": 18.7,
+    "maxDepth": 0.74,
+    "spins": 7,
+    "timeSec": 50
+  },
+  {
+    "station": 12,
+    "clock": "11:18",
+    "tapeFt": 20.3,
+    "maxDepth": 0.6,
+    "spins": 3,
+    "timeSec": 55
+  },
+  {
+    "station": 13,
+    "clock": "11:21",
+    "tapeFt": 21.9,
+    "maxDepth": 0.61,
+    "spins": 5,
+    "timeSec": 51.8
+  },
+  {
+    "station": 14,
+    "clock": "11:23",
+    "tapeFt": 23.5,
+    "maxDepth": 0.72,
+    "spins": 10,
+    "timeSec": 51.1
+  },
+  {
+    "station": 15,
+    "clock": "11:24",
+    "tapeFt": 25.1,
+    "maxDepth": 0.6,
+    "spins": 0,
+    "timeSec": 50
+  },
+  {
+    "station": 16,
+    "clock": "11:25",
+    "tapeFt": 27.2,
+    "maxDepth": 0,
+    "spins": 0,
+    "timeSec": 50,
+    "readingComments": "End bank"
+  }
+]
