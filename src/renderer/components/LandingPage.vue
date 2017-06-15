@@ -72,12 +72,6 @@
 </script>
 
 <style>
-  #wrapper {
-    height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
-  }
-
   #logo {
     height: 80px;
     width: auto;

@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <ul class="mj-navbar">
+      <div class="container-fluid">
       <li class="mj-nav-item">
         <router-link class="mj-nav-link brand" :to="'/'"><b>UpStream</b></router-link>
       </li>
       <li class="mj-nav-item">
         <router-link class="mj-nav-link" :to="'/start'">New Site</router-link>
       </li>
+      </div>
     </ul>
-    <div class="container-fluid">
+    <div class="container-fluid pt-4 pl-5 pr-5">
       <router-view></router-view>
     </div>
   </div>
@@ -75,10 +77,10 @@
     background:
         radial-gradient(
             ellipse at top left,
-            rgba(255, 255, 255, 1) 50%,
+            rgba(255, 255, 255, 1) 40%,
             rgba(86, 142, 229, 0.9) 100%
         );
-    padding-bottom: 30px;
+    padding-bottom: 160px;
   }
   .mj-navbar {
     list-style-type: none;

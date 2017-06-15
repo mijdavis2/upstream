@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>New Site</h1>
-    <div class="card p-2">
+    <div class="card p-3 bg-faded">
     <form>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -68,11 +68,10 @@
           Check me out
         </label>
       </div>
+      <div class="d-flex flex-row-reverse">
+        <button v-on:click="generateTable" class="m-3">Generate Table</button><br>
+      </div>
     </form>
-    </div>
-    <br>
-    <div class="d-flex flex-row-reverse">
-      <button v-on:click="generateTable">Generate Table</button><br>
     </div>
   </div>
 </template>
