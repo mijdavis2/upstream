@@ -43,3 +43,7 @@ Output
 
 Output
 - table with tapeFt set for each station
+
+# Build
+
+`electron-packager ./ upstream --all --overwrite`

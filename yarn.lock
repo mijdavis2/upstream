@@ -2408,27 +2408,26 @@ ejs@~2.5.6:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.6.tgz#479636bfa3fe3b1debd52087f0acb204b4f19c88"
 
-electron-builder-core@18.7.0:
-  version "18.7.0"
-  resolved "https://registry.yarnpkg.com/electron-builder-core/-/electron-builder-core-18.7.0.tgz#6f72649fbc6ff7f34e177bcb366bffedb8819175"
+electron-builder-core@18.4.0:
+  version "18.4.0"
+  resolved "https://registry.yarnpkg.com/electron-builder-core/-/electron-builder-core-18.4.0.tgz#e60129df2e6800cd6829c7e0dd7fa0538d1a197f"
 
-electron-builder-http@18.8.0, electron-builder-http@~18.8.0:
-  version "18.8.0"
-  resolved "https://registry.yarnpkg.com/electron-builder-http/-/electron-builder-http-18.8.0.tgz#ede8bace4fab384a1469b21479296cdcdb4ebec6"
+electron-builder-http@18.6.0, electron-builder-http@~18.6.0:
+  version "18.6.0"
+  resolved "https://registry.yarnpkg.com/electron-builder-http/-/electron-builder-http-18.6.0.tgz#01cbfc571b9dfb66e26b383c1e4c3955db61e8a5"
   dependencies:
     debug "2.6.8"
     fs-extra-p "^4.3.0"
 
-electron-builder-util@18.8.0, electron-builder-util@~18.8.0:
-  version "18.8.0"
-  resolved "https://registry.yarnpkg.com/electron-builder-util/-/electron-builder-util-18.8.0.tgz#a5c5a47892ae5689b027b98830545dd4527b8aaf"
+electron-builder-util@18.6.0, electron-builder-util@~18.6.0:
+  version "18.6.0"
+  resolved "https://registry.yarnpkg.com/electron-builder-util/-/electron-builder-util-18.6.0.tgz#cb0ad8cf7f66ee3b7a657b80aa526767885ca087"
   dependencies:
     "7zip-bin" "^2.1.0"
     bluebird-lst "^1.0.2"
     chalk "^1.1.3"
     debug "2.6.8"
-    electron-builder-http "~18.8.0"
-    fcopy-pre-bundled "^0.1.2"
+    electron-builder-http "~18.6.0"
     fs-extra-p "^4.3.0"
     ini "^1.3.4"
     is-ci "^1.0.10"
@@ -2437,9 +2436,9 @@ electron-builder-util@18.8.0, electron-builder-util@~18.8.0:
     stat-mode "^0.2.2"
     tunnel-agent "^0.6.0"
 
-electron-builder@^18.1.0:
-  version "18.8.1"
-  resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-18.8.1.tgz#3fa29d4e87ae05ebae5986e0dd92bbb34512c18d"
+electron-builder@^18.6.2:
+  version "18.6.2"
+  resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-18.6.2.tgz#0854f1e69877f12ebbc7bba64abfe680fd078f89"
   dependencies:
     "7zip-bin" "^2.1.0"
     ajv "^5.1.5"
@@ -2450,12 +2449,12 @@ electron-builder@^18.1.0:
     chromium-pickle-js "^0.2.0"
     cuint "^0.2.2"
     debug "2.6.8"
-    electron-builder-core "18.7.0"
-    electron-builder-http "18.8.0"
-    electron-builder-util "18.8.0"
+    electron-builder-core "18.4.0"
+    electron-builder-http "18.6.0"
+    electron-builder-util "18.6.0"
     electron-download-tf "4.3.1"
     electron-osx-sign "0.4.6"
-    electron-publish "18.8.0"
+    electron-publish "18.6.0"
     fs-extra-p "^4.3.0"
     hosted-git-info "^2.4.2"
     is-ci "^1.0.10"
@@ -2558,14 +2557,14 @@ electron-osx-sign@0.4.6:
     plist "^2.0.1"
     tempfile "^1.1.1"
 
-electron-publish@18.8.0:
-  version "18.8.0"
-  resolved "https://registry.yarnpkg.com/electron-publish/-/electron-publish-18.8.0.tgz#1f7ff38e9dc591c11cd81caf7ff2be9578286bc9"
+electron-publish@18.6.0:
+  version "18.6.0"
+  resolved "https://registry.yarnpkg.com/electron-publish/-/electron-publish-18.6.0.tgz#02622dcd7513d9094c1ab053c22bbfc299c7b5c5"
   dependencies:
     bluebird-lst "^1.0.2"
     chalk "^1.1.3"
-    electron-builder-http "~18.8.0"
-    electron-builder-util "~18.8.0"
+    electron-builder-http "~18.6.0"
+    electron-builder-util "~18.6.0"
     fs-extra-p "^4.3.0"
     mime "^1.3.6"
 
@@ -3124,10 +3123,6 @@ faye-websocket@~0.11.0:
   resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.11.1.tgz#f0efe18c4f56e4f40afc7e06c719fd5ee6188f38"
   dependencies:
     websocket-driver ">=0.5.1"
-
-fcopy-pre-bundled@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/fcopy-pre-bundled/-/fcopy-pre-bundled-0.1.2.tgz#656baeb0d0c450cafa9c902664d440ceb99bcde1"
 
 fd-slicer@~1.0.1:
   version "1.0.1"

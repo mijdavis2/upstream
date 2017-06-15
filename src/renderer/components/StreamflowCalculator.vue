@@ -46,7 +46,7 @@
       </tr>
       </tbody>
     </float-thead-table>
-    <p>Total discharge: {{ totalDischarge }}</p>
+    <h2>Total discharge: {{ totalDischarge }}</h2>
   </div>
 </template>
 
@@ -88,7 +88,7 @@
     },
     methods: {
       getFtPerSec (spins, timeSec) {
-        if (!timeSec) {
+        if (!spins || !timeSec) {
           return 0
         }
         return VAL_1 * (spins / timeSec) + VAL_2
