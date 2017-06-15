@@ -4916,6 +4916,10 @@ node-abi@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-2.0.3.tgz#0ca67e5e667b8e1343549ca17153a815d0bbfdaa"
 
+node-async-loop@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/node-async-loop/-/node-async-loop-1.2.2.tgz#c5870299bf6477b780c88b431aa5b37733f55a3d"
+
 node-dir@^0.1.10:
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/node-dir/-/node-dir-0.1.17.tgz#5f5665d93351335caabef8f1c554516cf5f1e4e5"

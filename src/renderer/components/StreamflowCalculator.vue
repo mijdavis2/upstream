@@ -5,7 +5,7 @@
     <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
       <thead class="thead-inverse">
         <tr>
-          <th v-for="field of fields">{{ field.label }}</th>
+          <th v-for="field of fields">{{ field }}</th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +28,25 @@
     </float-thead-table>
     <br>
     <button v-on:click="getResults">Get Results</button>
-    <p>{{ results }}</p>
+    <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
+      <thead class="thead-inverse">
+      <tr>
+        <th v-for="field of resultFields">{{ field }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="item of results">
+        <th scope="row">{{ item.station }}</th>
+        <td>{{ item.ftPerSec }}</td>
+        <td>{{ item.stationFt }}</td>
+        <td>{{ item.widthFt }}</td>
+        <td>{{ item.q }}</td>
+        <td>{{ item.qCol }}</td>
+        <td>{{ Math.round(item.percentFlow) }}%</td>
+      </tr>
+      </tbody>
+    </float-thead-table>
+    <p>Total discharge: {{ totalDischarge }}</p>
   </div>
 </template>
 
@@ -44,53 +62,44 @@
       perPage: 5,
       filter: null,
       items: [],
-      results: '',
+      results: [],
       fields: [
-        {
-          name: 'station',
-          label: 'Station'
-        },
-        {
-          name: 'clock',
-          label: 'Clock'
-        },
-        {
-          name: 'tapeFt',
-          label: 'Tape, ft'
-        },
-        {
-          name: 'maxDepth',
-          label: 'Max Depth'
-        },
-        {
-          name: 'spins',
-          label: 'Spins'
-        },
-        {
-          name: 'timeSec',
-          label: 'Time, Sec'
-        },
-        {
-          name: 'readingComments',
-          label: 'Reading Comments'
-        }
-      ]
+        'Station',
+        'Clock',
+        'Tape, ft',
+        'Max Depth',
+        'Spins',
+        'Time, Sec',
+        'Reading Comments'
+      ],
+      resultFields: [
+        'Station',
+        'ft/sec',
+        'station, ft',
+        'width, ft',
+        'q',
+        'Qcol',
+        'Percent of flow'
+      ],
+      totalDischarge: ''
     }),
     created () {
       this.items = mockData
     },
     methods: {
       getFtPerSec (spins, timeSec) {
-        if (!spins || !timeSec) {
+        if (!timeSec) {
           return 0
         }
         return VAL_1 * (spins / timeSec) + VAL_2
       },
-      getStationFt (currentTape, previousTape = 0) {
-        return currentTape - previousTape
+      getStationFt (currentTape, firstTape) {
+        return Math.round((currentTape - firstTape) * 100) / 100
       },
       getWidthFt (currentStationFt, previousStationFt, nextStationFt) {
-        return (currentStationFt - previousStationFt) + (nextStationFt - currentStationFt) / 2
+        return Math.round(
+          (((currentStationFt - previousStationFt) / 2) + ((nextStationFt - currentStationFt) / 2)) * 100
+          ) / 100
       },
       getQ (ftPerSec, maxDepth) {
         return ftPerSec * maxDepth
@@ -102,36 +111,83 @@
         if (totalDischarge === 0) {
           return 0
         }
-        return qCol / totalDischarge
+        return (qCol / totalDischarge) * 100
       },
-      totalDischarge () {
-        return 0
-      },
-      getResults: function () {
-        const results = {}
-        for (const item of this.items) {
-          const previousStation = item.station !== 0 ? this.items[item.station - 1] : null
-          const nextStation = item.station !== this.items.length - 1 ? this.items[item.station + 1] : null
-          const ftPerSec = this.getFtPerSec(item.spins, item.timeSec)
-          this.items[item.station].ftPerSec = ftPerSec
-          const previousTape = previousStation ? previousStation.tapeFt : 0
-          const stationFt = this.getStationFt(item.tapeFt, previousTape)
-          const previousStationFt = previousStation ? previousStation.stationFt : 0
-          const nextStationFt = nextStation ? nextStation.stationFt : 0
-          const widthFt = this.getWidthFt(stationFt, previousStationFt, nextStationFt)
-          const q = this.getQ(ftPerSec, item.maxDepth)
-          const qCol = this.getQCol(q, widthFt)
-          const percentFlow = this.getPercentFlow(qCol, this.totalDischarge)
-          results[item.station] = {
-            ftPerSec: ftPerSec,
-            stationFt: stationFt,
-            widthFt: widthFt,
-            q: q,
-            qCol: qCol,
-            percentFlow: percentFlow
+      getTotalDischarge () {
+        const qCols = []
+        for (const item of this.results) {
+          if ('qCol' in item) {
+            qCols.push(item.qCol)
           }
         }
-        this.results = results
+        return qCols.reduce((total, amount) => total + amount)
+      },
+      getResults: function () {
+        const asyncLoop = function (o) {
+          let i = -1
+          const length = o.length
+
+          const loop = function () {
+            i++
+            if (i === length) {
+              o.callback()
+              return
+            }
+            o.functionToLoop(loop, i)
+          }
+          loop()
+        }
+        const items = this.items
+        const vm = this
+        asyncLoop({
+          length: this.items.length,
+          functionToLoop: function (loop, i) {
+            setTimeout(function () {
+              const item = items[i]
+              const ftPerSec = vm.getFtPerSec(item.spins, item.timeSec)
+              const firstTape = vm.items[0].tapeFt
+              const stationFt = (i === 0) ? 0 : vm.getStationFt(item.tapeFt, firstTape)
+              const result = {
+                station: item.station,
+                ftPerSec: ftPerSec,
+                stationFt: stationFt
+              }
+              vm.results[i] = result
+              loop()
+            }, 1)
+          },
+          callback: function () {
+            asyncLoop({
+              length: vm.items.length,
+              functionToLoop: function (loop, i) {
+                setTimeout(function () {
+                  const result = vm.results[i]
+                  const item = vm.items[i]
+                  const previousStation = result.station !== 0 ? vm.results[result.station - 1] : null
+                  const nextStation = result.station !== vm.items.length ? vm.results[result.station + 1] : null
+                  const previousStationFt = previousStation ? previousStation.stationFt : 0
+                  const nextStationFt = nextStation ? nextStation.stationFt : 0
+                  const widthFt = nextStation
+                    ? vm.getWidthFt(result.stationFt, previousStationFt, nextStationFt)
+                    : Math.round((((result.stationFt - previousStationFt) / 2)) * 100) / 100
+                  const q = vm.getQ(result.ftPerSec, item.maxDepth)
+                  const qCol = vm.getQCol(q, widthFt)
+                  vm.results[i].widthFt = widthFt
+                  vm.results[i].q = q
+                  vm.results[i].qCol = qCol
+                  loop()
+                }, 1)
+              },
+              callback: function () {
+                const totalDischarge = vm.getTotalDischarge()
+                vm.totalDischarge = totalDischarge
+                for (let item of vm.results) {
+                  item.percentFlow = vm.getPercentFlow(item.qCol, totalDischarge)
+                }
+              }
+            })
+          }
+        })
       }
     }
   }

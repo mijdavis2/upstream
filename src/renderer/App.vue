@@ -2,7 +2,7 @@
   <div id="app">
     <ul class="mj-navbar">
       <li class="mj-nav-item">
-        <router-link class="mj-nav-link brand" :to="'/'"><b>AQUARIUS</b></router-link>
+        <router-link class="mj-nav-link brand" :to="'/'"><b>Upstream</b></router-link>
       </li>
       <li class="mj-nav-item">
         <router-link class="mj-nav-link" :to="'/sfcalc'">New Streamflow</router-link>
