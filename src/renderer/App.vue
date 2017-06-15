@@ -2,10 +2,10 @@
   <div id="app">
     <ul class="mj-navbar">
       <li class="mj-nav-item">
-        <router-link class="mj-nav-link brand" :to="'/'"><b>Upstream</b></router-link>
+        <router-link class="mj-nav-link brand" :to="'/'"><b>UpStream</b></router-link>
       </li>
       <li class="mj-nav-item">
-        <router-link class="mj-nav-link" :to="'/sfcalc'">New Streamflow</router-link>
+        <router-link class="mj-nav-link" :to="'/start'">New Site</router-link>
       </li>
     </ul>
     <div class="container-fluid">
@@ -21,16 +21,64 @@
 </script>
 
 <style>
-  body {
-    font-size: small;
+  body { font-family: 'Source Sans Pro', sans-serif; font-size: 20px; }
+
+  main {
+    display: flex;
+    justify-content: space-between;
   }
+
+  main > div { flex-basis: 50%; }
+
+  .welcome {
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    color: #2c3e50;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .title.alt {
+    margin-bottom: 10px;
+  }
+
+  .doc p {
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  button {
+    font-size: .9em;
+    cursor: pointer;
+    outline: none;
+    padding: 0.75em 2em;
+    border-radius: 2em;
+    display: inline-block;
+    color: #fff;
+    background-color: #347556;
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+    border: 1px solid #347556;
+  }
+
+  button.alt {
+    color: #347556;
+    background-color: whitesmoke;
+  }
+
   #app {
     background:
         radial-gradient(
             ellipse at top left,
-            rgba(255, 255, 255, 1) 40%,
+            rgba(255, 255, 255, 1) 50%,
             rgba(86, 142, 229, 0.9) 100%
         );
+    padding-bottom: 30px;
   }
   .mj-navbar {
     list-style-type: none;

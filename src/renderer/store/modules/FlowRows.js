@@ -1,14 +1,21 @@
 const state = {
-  rows: {}
+  items: []
+}
+
+const getters = {
+  items (state) {
+    return state.items
+  }
 }
 
 const mutations = {
-  UPDATE_ROW (state, payload) {
-    state.rows[payload.index] = payload.row
+  UPDATE_ROWS (state, payload) {
+    state.items = payload
   }
 }
 
 export default {
   state,
+  getters,
   mutations
 }

@@ -27,7 +27,10 @@
       </tbody>
     </float-thead-table>
     <br>
-    <button v-on:click="getResults">Get Results</button>
+    <div class="d-flex flex-row-reverse">
+      <button v-on:click="getResults">Calculate Discharge</button><br>
+    </div>
+    <br>
     <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
       <thead class="thead-inverse">
       <tr>
@@ -84,7 +87,7 @@
       totalDischarge: ''
     }),
     created () {
-      this.items = mockData
+      this.items = this.$store.getters.items.length > 0 ? this.$store.getters.items : mockData
     },
     methods: {
       getFtPerSec (spins, timeSec) {

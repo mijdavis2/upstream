@@ -6,7 +6,7 @@
     "maxDepth": 0,
     "spins": 0,
     "timeSec": 50,
-    "readingComments": "Start bank"
+    "readingComments": "Start bank \n*THIS IS MOCK DATA"
   },
   {
     "station": 1,
@@ -135,6 +135,6 @@
     "maxDepth": 0,
     "spins": 0,
     "timeSec": 50,
-    "readingComments": "End bank"
+    "readingComments": "End bank \n*THIS IS MOCK DATA"
   }
 ]

@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/LandingPage')
     },
     {
+      path: '/start',
+      name: 'start',
+      component: require('@/components/StartPage')
+    },
+    {
       path: '/sfcalc',
       name: 'streamflow-calculator',
       component: require('@/components/StreamflowCalculator')

@@ -1,28 +1,59 @@
 <template>
   <div id="wrapper">
-    <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
+    <div class="d-flex flex-row">
+      <img id="logo" src="~@/assets/sea.svg" alt="electron-vue">
+      <div><h1 class="logo-name">UpStream</h1></div>
+    </div>
     <main>
       <div class="left-side">
         <span class="title">
-          Welcome to Upstream!
+          Welcome to UpStream!
         </span>
-        <system-information></system-information>
+        <p>
+          UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>.
+        </p><br>
+        <img id="tulogo" src="~@/assets/tulogo.png" alt="electron-vue">
+        <br>
       </div>
 
       <div class="right-side">
         <div class="doc">
           <div class="title">Getting Started</div>
           <p>
-            Upstream is a quick and dirty streamflow calc utility
+            UpStream will generate a table for you to input stream flow data based on a series of options.
           </p>
-          <router-link :to="'/sfcalc'"><button>Stream Flow Calculator</button></router-link><br><br>
-        </div>
-        <div class="doc">
-          <div class="title alt">To report issues or ruquest features:</div>
-          <button class="alt" @click="open('https://github.com/mijdavis2/upstream/issues')">Github Issues</button>
+          <p>
+            You will be able to add metadata such as site name, id, comments, etc prior to or after
+            filling out the stream flow data.
+          </p>
+          <p>
+            Click <b><i>Start new site</i></b> below to begin!
+          </p>
+          <br>
+          <router-link :to="'/sfcalc'"><button>Start new site</button></router-link>
         </div>
       </div>
     </main>
+    <br>
+    <hr>
+    <main>
+      <div class="left-side">
+          <div class="doc">
+            <div class="title alt">Report issues or request features</div>
+            UpStream is open-sourced on GitHub.
+            Bug-fix requests and feature requests will be handled as quickly as possible.
+            To better troubleshoot issues, include the system information in bug reports.<br><br>
+            <button class="alt" @click="open('https://github.com/mijdavis2/upstream/issues')">Go to UpStream Issues</button>
+          </div>
+          <br>
+        </div>
+
+        <div class="right-side">
+          <system-information></system-information>
+        </div>
+    </main>
+    <br>
+    <div class="source">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
   </div>
 </template>
 
@@ -41,16 +72,6 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body { font-family: 'Source Sans Pro', sans-serif; font-size: 20px; }
-
   #wrapper {
     height: 100vh;
     padding: 60px 80px;
@@ -58,61 +79,35 @@
   }
 
   #logo {
+    height: 80px;
+    width: auto;
+    margin-right: 1em;
+  }
+
+  #tulogo {
     height: auto;
-    margin-bottom: 20px;
-    width: 420px;
-  }
+    width: 150px;
 
-  main {
-    display: flex;
-    justify-content: space-between;
   }
-
-  main > div { flex-basis: 50%; }
 
   .left-side {
     display: flex;
     flex-direction: column;
+    margin-right: 1em;
   }
 
-  .welcome {
-    color: #555;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    color: #2c3e50;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 6px;
-  }
-
-  .title.alt {
-    margin-bottom: 10px;
-  }
-
-  .doc p {
-    color: black;
-    margin-bottom: 10px;
-  }
-
-  .doc button {
-    font-size: .9em;
-    cursor: pointer;
-    outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
-    display: inline-block;
-    color: #fff;
-    background-color: #347556;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #347556;
-  }
-
-  .doc button.alt {
+  .logo-name {
+    line-height: 80px;
     color: #347556;
-    background-color: whitesmoke;
+    font-weight: 800;
+    font-size: 2.5em;
+  }
+
+  .source {
+    font-size: .7em;
+    color: grey;
+  }
+  .source a {
+    text-decoration: none;
   }
 </style>

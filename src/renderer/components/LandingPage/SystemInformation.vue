@@ -1,15 +1,7 @@
 <template>
   <div>
-    <div class="title">Information</div>
+    <div class="title">System Information</div>
     <div class="items">
-      <div class="item">
-        <div class="name">Path:</div>
-        <div class="value">{{ path }}</div>
-      </div>
-      <div class="item">
-        <div class="name">Route Name:</div>
-        <div class="value">{{ name }}</div>
-      </div>
       <div class="item">
         <div class="name">Vue.js:</div>
         <div class="value">{{ vue }}</div>
@@ -35,9 +27,7 @@
     data () {
       return {
         electron: process.versions['atom-shell'],
-        name: 'landing-page',
         node: process.versions.node,
-        path: '/',
         platform: require('os').platform(),
         vue: require('vue/package.json').version
       }
@@ -47,7 +37,6 @@
 
 <style scoped>
   .title {
-    color: #888;
     font-size: 18px;
     font-weight: initial;
     letter-spacing: .25px;
