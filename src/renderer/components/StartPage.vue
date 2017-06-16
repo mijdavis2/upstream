@@ -4,24 +4,16 @@
     <div class="card p-3 bg-faded">
     <form>
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <label for="exampleSelect1">Site</label>
+        <select class="form-control" v-model="metadata.site" id="exampleSelect1">
+          <option v-for="site of sites">{{ site.name }}</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
-      <div class="form-group">
-        <label for="exampleSelect1">Example select</label>
-        <select class="form-control" id="exampleSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
+
       <div class="form-group">
         <label for="exampleSelect2">Example multiple select</label>
         <select multiple class="form-control" id="exampleSelect2">
@@ -79,9 +71,12 @@
 <script>
   export default {
     data: () => ({
-      newData: []
+      newData: [],
+      sites: [],
+      metadata: {}
     }),
     created () {
+      this.sites = this.$store.getters.sites
       this.newData = [
         {
           'station': 0,

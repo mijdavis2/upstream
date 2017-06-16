@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <ul class="mj-navbar">
-      <div class="container-fluid">
-      <li class="mj-nav-item">
-        <router-link class="mj-nav-link brand" :to="'/'"><b>UpStream</b></router-link>
-      </li>
-      <li class="mj-nav-item">
-        <router-link class="mj-nav-link" :to="'/start'">New Site</router-link>
-      </li>
+      <div class="container-fluid pl-4 pr-4">
+        <li class="mj-nav-item">
+          <router-link class="mj-nav-link brand" :to="'/'"><b>UpStream</b></router-link>
+        </li>
+        <li class="mj-nav-item">
+          <router-link class="mj-nav-link" :to="'/start'">New Site</router-link>
+        </li>
       </div>
     </ul>
     <div class="container-fluid pt-4 pl-5 pr-5">
@@ -17,8 +17,29 @@
 </template>
 
 <script>
+  const { app } = require('electron').remote
+  const fs = require('fs')
+
   export default {
-    name: 'upstream'
+    name: 'upstream',
+    created () {
+      this.checkSiteConfig()
+    },
+    methods: {
+      checkSiteConfig () {
+        const configBasePath = `${app.getPath('userData')}/upstream`
+        const siteConfigPath = `${configBasePath}/sites.json`
+        if (fs.existsSync(siteConfigPath)) {
+          const siteConfig = JSON.parse(fs.readFileSync(siteConfigPath, 'utf8'))
+          this.$store.commit('SET_SITES', siteConfig.sites)
+        } else {
+          const siteConfig = { sites: [{ name: 'Test Site' }] }
+          fs.existsSync(configBasePath) || fs.mkdirSync(configBasePath)
+          fs.writeFileSync(siteConfigPath, JSON.stringify(siteConfig))
+          this.$store.commit('SET_SITES', siteConfig.sites)
+        }
+      }
+    }
   }
 </script>
 

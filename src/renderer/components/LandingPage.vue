@@ -30,7 +30,7 @@
             Click <b><i>Start new site</i></b> below to begin!
           </p>
           <br>
-          <router-link :to="'/sfcalc'"><button>Start new site</button></router-link>
+          <router-link :to="'/start'"><button>Start new site</button></router-link>
         </div>
       </div>
     </main>
