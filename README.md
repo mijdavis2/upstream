@@ -2,33 +2,37 @@
 
 > Streamflow calc utility for Trout Unlimited
 
-#### Build Setup
+## Requirements
+
+- node 7+
+- yarn
+
+> Note: Linux dev environment is preferred
+
+## Develop
 
 ``` bash
 # install dependencies
-npm install
+yarn install
 
 # serve with hot reload at localhost:9080
-npm run dev
-
-# build electron application for production
-npm run build
+yarn run dev
 
 # run unit & end-to-end tests
-npm test
-
+yarn test
 
 # lint all JS/Vue component files in `src/`
-npm run lint
+yarn run lint
 
 ```
 
----
+## Build
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+`electron-packager ./ upstream --all --overwrite`
 
+## Specs
 
-# Specs
+_Just some notes on desired features_
 
 Inputs
 - startBank.tapeFt: int
@@ -44,6 +48,6 @@ Output
 Output
 - table with tapeFt set for each station
 
-# Build
+---
 
-`electron-packager ./ upstream --all --overwrite`
+This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
