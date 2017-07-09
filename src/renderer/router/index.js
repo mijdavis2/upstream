@@ -13,12 +13,12 @@ export default new Router({
     {
       path: '/start',
       name: 'start',
-      component: require('@/components/StartPage')
+      component: require('@/components/NewReportSetup')
     },
     {
-      path: '/sfcalc',
-      name: 'streamflow-calculator',
-      component: require('@/components/StreamflowCalculator')
+      path: '/report',
+      name: 'report',
+      component: require('@/components/Report')
     },
     {
       path: '*',

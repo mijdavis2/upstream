@@ -1,14 +1,14 @@
 <template>
-  <div id="wrapper">
-    <div class="d-flex flex-row">
-      <img id="logo" src="~@/assets/sea.svg" alt="electron-vue">
-      <div><h1 class="logo-name">UpStream</h1></div>
-    </div>
-    <main>
-      <div class="left-side">
-        <span class="title">
+  <div class="landing-wrapper p-3 intro-font-size">
+    <!--<div class="flex flex-center">-->
+      <!--<img id="logo" src="~@/assets/sea.svg" alt="electron-vue">-->
+      <!--<div><h1 class="alt-h1 logo-name">UpStream</h1></div>-->
+    <!--</div>-->
+    <main class="flex flex-between">
+      <div class="flex flex-column flex-sm">
+        <h2 class="alt-h2 mb-1">
           Welcome to UpStream!
-        </span>
+        </h2>
         <p>
           UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>.
         </p><br>
@@ -16,9 +16,9 @@
         <br>
       </div>
 
-      <div class="right-side">
+      <div class="flex-sm">
         <div class="doc">
-          <div class="title">Getting Started</div>
+          <h2 class="alt-h2 mb-1">Getting Started</h2>
           <p>
             UpStream will generate a table for you to input stream flow data based on a series of options.
           </p>
@@ -27,28 +27,30 @@
             filling out the stream flow data.
           </p>
           <p>
-            Click <b><i>Start new site</i></b> below to begin!
+            Click <b><i>Start new report</i></b> below to begin!
           </p>
           <br>
-          <router-link :to="'/start'"><button>Start new site</button></router-link>
+          <router-link :to="'/start'"><button class="btn btn-primary btn-large btn-block">Start new report</button></router-link>
         </div>
       </div>
     </main>
     <br>
     <hr>
-    <main>
-      <div class="left-side">
-          <div class="doc">
-            <div class="title alt">Report issues or request features</div>
-            UpStream is open-sourced on GitHub.
-            Bug-fix requests and feature requests will be handled as quickly as possible.
-            To better troubleshoot issues, include the system information in bug reports.<br><br>
-            <button class="alt" @click="open('https://github.com/mijdavis2/upstream/issues')">Go to UpStream Issues</button>
+    <main class="flex flex-between">
+      <div class="flex-md">
+        <div class="doc">
+          <h2 class="alt-h2 mb-1">Report issues or request features</h2>
+          UpStream is open-sourced on GitHub.
+          Bug-fix requests and feature requests will be handled as quickly as possible.
+          To better troubleshoot issues, include the system information in bug reports.<br><br>
+          <div class="text-center">
+            <button class="btn btn-outline" @click="open('https://github.com/mijdavis2/upstream/issues')">Go to UpStream Issues</button>
           </div>
-          <br>
         </div>
+        <br>
+      </div>
 
-        <div class="right-side">
+        <div class="flex-sm ml-3">
           <system-information></system-information>
         </div>
     </main>
@@ -71,37 +73,36 @@
   }
 </script>
 
-<style>
-  #logo {
-    height: 80px;
-    width: auto;
-    margin-right: 1em;
-  }
+<style scoped lang="stylus">
+  @require "../style/variables"
 
-  #tulogo {
-    height: auto;
-    width: 150px;
+  .landing-wrapper
+    background:
+      radial-gradient(
+        ellipse at top left,
+        rgba(255, 255, 255, 1) 40%,
+        rgba(86, 142, 229, 0.9) 100%
+      )
 
-  }
+  .intro-font-size
+    font-size 18px
 
-  .left-side {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1em;
-  }
+  #logo
+    height 80px
+    width auto
+    margin-right 1em
+  #tulogo
+    height auto
+    width 150px
+  .logo-name
+    line-height 80px
+    color theme-primary !important
+    font-weight 800
+    font-size 2.5e
 
-  .logo-name {
-    line-height: 80px;
-    color: #347556;
-    font-weight: 800;
-    font-size: 2.5em;
-  }
-
-  .source {
-    font-size: .7em;
-    color: grey;
-  }
-  .source a {
-    text-decoration: none;
-  }
+  .source
+    font-size .7em
+    color grey
+    a
+      text-decoration none
 </style>
