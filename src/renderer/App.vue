@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <ul class="mj-navbar">
-      <div class="container-fluid pl-4 pr-4">
-        <li class="mj-nav-item">
-          <router-link class="mj-nav-link brand" :to="'/'"><b>UpStream</b></router-link>
-        </li>
-        <li class="mj-nav-item">
-          <router-link class="mj-nav-link" :to="'/start'">New Site</router-link>
-        </li>
-      </div>
-    </ul>
-    <div class="container-fluid pt-4 pl-5 pr-5">
+    <header class="header">
+      <nav class="topnav">
+        <router-link class="brand" to="/"><b>UpStream</b></router-link>
+        <router-link to="/start">New Report</router-link>
+        <router-link to="/config">Configure</router-link>
+      </nav>
+    </header>
+    <div class="main-container">
       <router-view></router-view>
     </div>
   </div>
@@ -33,7 +30,7 @@
           const siteConfig = JSON.parse(fs.readFileSync(siteConfigPath, 'utf8'))
           this.$store.commit('SET_SITES', siteConfig.sites)
         } else {
-          const siteConfig = { sites: [{ name: 'Test Site' }] }
+          const siteConfig = { sites: [{ name: 'Test Site', id: 'TS' }] }
           fs.existsSync(configBasePath) || fs.mkdirSync(configBasePath)
           fs.writeFileSync(siteConfigPath, JSON.stringify(siteConfig))
           this.$store.commit('SET_SITES', siteConfig.sites)
@@ -43,94 +40,73 @@
   }
 </script>
 
-<style>
-  body { font-family: 'Source Sans Pro', sans-serif; font-size: 20px; }
+<style lang="scss">
+  @import "~primer-css/index.scss";
+</style>
 
-  main {
-    display: flex;
-    justify-content: space-between;
-  }
+<style lang="stylus">
+  @require style
 
-  main > div { flex-basis: 50%; }
-
-  .welcome {
-    color: #555;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    color: #2c3e50;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 6px;
-  }
-
-  .title.alt {
-    margin-bottom: 10px;
-  }
-
-  .doc p {
-    color: black;
-    margin-bottom: 10px;
-  }
-
-  button {
-    font-size: .9em;
-    cursor: pointer;
-    outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
-    display: inline-block;
-    color: #fff;
-    background-color: #347556;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #347556;
-  }
-
-  button.alt {
-    color: #347556;
-    background-color: whitesmoke;
-  }
-
-  #app {
-    background:
-        radial-gradient(
-            ellipse at top left,
-            rgba(255, 255, 255, 1) 40%,
-            rgba(86, 142, 229, 0.9) 100%
-        );
-    padding-bottom: 160px;
-  }
-  .mj-navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  .mj-nav-item {
-    float: left;
-  }
-  .mj-nav-link {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  .mj-nav-link:hover {
-    background-color: #111;
-    color: white;
-    text-decoration: none;
-  }
-  .router-link-exact-active {
-    background-color: #505050;
-    color: white !important;
-    text-decoration: none !important;
-  }
-  .brand {
-    background-color: rgb(51, 51, 51);
-  }
+  html
+    height 100%
+  body
+    height 100%
+    font-size 15px
+    margin 0
+    color theme-dark-bg
+    overflow-y scroll
+    background-color #f1f1f1
+  #app
+    margin-top 54px
+  a
+    color theme-primary
+    text-decoration none
+  .header
+    background-color theme-dark-bg
+    position absolute
+    z-index 10
+    height 54px
+    top 0
+    left 0
+    right 0
+    .inner
+      width 980px
+      margin-right auto
+      margin-left auto
+    a, .img
+      color rgba(255, 255, 255, .8)
+      line-height 26px !important
+      transition color .15s ease
+      display inline-block
+      vertical-align middle
+      font-weight 300
+      letter-spacing .075em
+      &:hover
+        color #fff
+      &.router-link-active
+        color #fff
+        font-weight 400
+    .user-option
+      margin 0
+      float right
+      cursor pointer
+      &:hover
+        background-color inherit
+        color #fff
+  .topnav
+    background-color: theme-dark-bg
+    overflow: hidden
+  .topnav a
+    float: left
+    display: block
+    color: #f2f2f2
+    text-align: center
+    padding: 14px 16px
+    text-decoration: none
+  .topnav a:hover
+    background-color: #ddd
+    color: black
+    text-decoration: none
+  .main-container
+    width 100%
 </style>

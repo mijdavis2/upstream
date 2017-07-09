@@ -1,60 +1,65 @@
 <template>
   <div>
-    <br><br>
-    <h1>New Streamflow Calculation</h1>
-    <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
-      <thead class="thead-inverse">
-        <tr>
-          <th v-for="field of fields">{{ field }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item of items">
-          <th scope="row">{{ item.station }}</th>
-          <td>
-            <input class="stream-input" type="time" v-model="item.clock"></td>
-          <td>
-            <input class="stream-input" type="number" v-model="item.tapeFt"></td>
-          <td>
-            <input class="stream-input" type="number" v-model="item.maxDepth"></td>
-          <td>
-            <input class="stream-input" type="number" v-model="item.spins"></td>
-          <td>
-            <input class="stream-input" type="number" v-model="item.timeSec"></td>
-          <td>
-            <textarea v-model="item.readingComments"></textarea></td>
-        </tr>
-      </tbody>
-    </float-thead-table>
+    <h1 class="alt-h1 m-3">New Streamflow Calculation</h1>
+    <div class="table-wrapper">
+      <float-thead-table class="table table-sm table-striped table-bordered">
+        <thead class="thead-inverse">
+          <tr>
+            <th v-for="field of fields">{{ field }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item of items">
+            <th scope="row">{{ item.station }}</th>
+            <td>
+              <input class="stream-input" type="text" v-model="item.clock">
+              <button class="btn btn-small" v-on:click="autofillClock(item.station)">Auto</button></td>
+            <td>
+              <input class="stream-input" type="number" v-model="item.tapeFt"></td>
+            <td>
+              <input class="stream-input" type="number" v-model="item.maxDepth"></td>
+            <td>
+              <input class="stream-input" type="number" v-model="item.spins"></td>
+            <td>
+              <input class="stream-input" type="number" v-model="item.timeSec"></td>
+            <td>
+              <textarea v-model="item.readingComments"></textarea></td>
+          </tr>
+        </tbody>
+      </float-thead-table>
+    </div>
     <br>
     <div class="d-flex flex-row-reverse">
       <button v-on:click="getResults">Calculate Discharge</button><br>
     </div>
     <br>
-    <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
-      <thead class="thead-inverse">
-      <tr>
-        <th v-for="field of resultFields">{{ field }}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="item of results">
-        <th scope="row">{{ item.station }}</th>
-        <td>{{ item.ftPerSec }}</td>
-        <td>{{ item.stationFt }}</td>
-        <td>{{ item.widthFt }}</td>
-        <td>{{ item.q }}</td>
-        <td>{{ item.qCol }}</td>
-        <td>{{ Math.round(item.percentFlow) }}%</td>
-      </tr>
-      </tbody>
-    </float-thead-table>
+    <div class="table-wrapper">
+      <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
+        <thead class="thead-inverse">
+        <tr>
+          <th v-for="field of resultFields">{{ field }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="item of results">
+          <th scope="row">{{ item.station }}</th>
+          <td>{{ item.ftPerSec }}</td>
+          <td>{{ item.stationFt }}</td>
+          <td>{{ item.widthFt }}</td>
+          <td>{{ item.q }}</td>
+          <td>{{ item.qCol }}</td>
+          <td>{{ Math.round(item.percentFlow) }}%</td>
+        </tr>
+        </tbody>
+      </float-thead-table>
+    </div>
     <h2>Total discharge: {{ totalDischarge }}</h2>
   </div>
 </template>
 
 <script>
-  import mockData from './mockData.json'
+  import mockData from '../mockData.json'
+  import moment from 'moment'
 
   const VAL_1 = 0.9604
   const VAL_2 = 0.0312
@@ -67,7 +72,7 @@
       items: [],
       results: [],
       fields: [
-        'Station',
+        'St',
         'Clock',
         'Tape, ft',
         'Max Depth',
@@ -90,6 +95,9 @@
       this.items = this.$store.getters.items.length > 0 ? this.$store.getters.items : mockData
     },
     methods: {
+      autofillClock (station) {
+        this.items[station].clock = moment().format('hh:mm a')
+      },
       getFtPerSec (spins, timeSec) {
         if (!spins || !timeSec) {
           return 0
@@ -196,8 +204,14 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  @import "../../style/mixins/table";
+
+  .thead-inverse {
+    background-color: #24292e;
+    color: white;
+  }
   .stream-input {
-    max-width: 100px !important;
+    max-width: 70px !important;
   }
 </style>
