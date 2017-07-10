@@ -2,8 +2,7 @@ const state = {
   site: null,
   startBank: null,
   endBank: null,
-  stationConfig: null,
-  reportId: null
+  stationConfig: null
 }
 
 const getters = {
@@ -18,9 +17,6 @@ const getters = {
   },
   stationConfig (state) {
     return state.stationConfig
-  },
-  reportId (state) {
-    return state.reportId
   }
 }
 
@@ -29,16 +25,13 @@ const mutations = {
     state.site = site
   },
   UPDATE_START_BANK (state, site) {
-    state.startBank = Math.round(parseInt(site) * 100) / 100
+    state.startBank = Math.round(parseFloat(site) * 100) / 100
   },
   UPDATE_END_BANK (state, site) {
-    state.endBank = Math.round(parseInt(site) * 100) / 100
+    state.endBank = Math.round(parseFloat(site) * 100) / 100
   },
   UPDATE_STATION_CONFIG (state, site) {
     state.stationConfig = site
-  },
-  UPDATE_REPORT_ID (state, site) {
-    state.reportId = site
   }
 }
 

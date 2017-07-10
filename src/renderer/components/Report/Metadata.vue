@@ -1,12 +1,12 @@
 <template>
   <div class="p-3">
     <div class="card p-3 bg-faded">
-      <h1>Site: {{ $store.getters.site.name }} - {{ $store.getters.site.id }}</h1>
+      <h1>Site: {{ siteName }} - {{ siteId }}</h1>
       <form>
-        <div>
+        <div v-scroll-spy="metadataScrollPos">
           <h3 class="mt-3">Site Visit Summary</h3><hr>
-          <button class="btn btn-small mt-1" v-on:click="autofillDate">Autofill Datetime</button>
-          <div class="flex flex-between flex-wrap">
+          <a class="btn btn-small mt-1" v-on:click="autofillDate">Autofill Datetime</a>
+          <div id="site-visit-summary" class="section flex flex-between flex-wrap">
             <dl v-for="item of Object.keys(siteVisitSummary)" v-if="item !== 'Meter type'" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
               <dd><input class="form-control" type="text" v-model="siteVisitSummary[item]"></dd>
@@ -21,8 +21,9 @@
               </dd>
             </dl>
           </div>
+
           <h3 class="mt-3">Channel Summary</h3><hr>
-          <div class="flex flex-between flex-wrap">
+          <div id="channel-summary" class="section flex flex-between flex-wrap">
             <dl v-for="item of Object.keys(channelSummary)" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
               <dd><input class="form-control" type="text" v-model="channelSummary[item]"></dd>
@@ -33,25 +34,35 @@
                             v-model="channelSummary['Comments on rating']"></textarea></dd>
             </dl>
           </div>
-        </div>
 
-        <h3 class="mt-3">Comments</h3><hr>
-        <div class="flex flex-between flex-wrap">
-          <dl v-for="item of Object.keys(comments)" class="form-group" style="width: 45%;">
-            <dt><label>{{ item }}</label></dt>
-            <dd><textarea class="form-control" type="text" v-model="comments[item]"></textarea></dd>
-          </dl>
+          <h3 class="mt-3">Comments</h3><hr>
+          <div id="comments" class="section flex flex-between flex-wrap">
+            <dl v-for="item of Object.keys(comments)" class="form-group" style="width: 45%;">
+              <dt><label>{{ item }}</label></dt>
+              <dd><textarea class="form-control" type="text" v-model="comments[item]"></textarea></dd>
+            </dl>
+          </div>
         </div>
-
       </form>
     </div>
+    <a v-if="metadataScrollPos < 9" href="#flowTable" v-on:click="storedPosition = metadataScrollPos">
+      <button class="fab"><img height="30" src="~@/assets/scroll.svg" alt="electron-vue"></button></a>
+    <a v-else @click="$scrollTo(storedPosition)" href="#">
+      <button class="fab"><img height="30" src="~@/assets/scroll.svg" alt="electron-vue"></button>
+    </a>
   </div>
 </template>
 
 <script>
   import moment from 'moment'
+  import debounce from 'lodash.debounce'
+
   export default {
     data: () => ({
+      metadataScrollPos: 0,
+      storedPosition: 0,
+      siteName: '',
+      siteId: '',
       siteVisitSummary: {
         'Date': null,
         'Start time': null,
@@ -64,7 +75,7 @@
         'Atmospheric Cond': null,
         'Staff Plate Reading': null,
         'Meter type': {
-          'name': 'Pygmy Meter'
+          name: 'Pygmy Meter'
         }
       },
       comments: { 'Site comments': null, 'Site repairs needed': null },
@@ -82,21 +93,47 @@
       },
       meterTypes: [
         {
-          'name': 'Pygmy Meter'
+          name: 'Pygmy Meter'
         },
         {
-          'name': 'AA Meter'
+          name: 'AA Meter'
         }
       ]
     }),
+    created () {
+      this.siteName = this.$store.getters.site.name
+      this.siteId = this.$store.getters.site.id
+    },
     methods: {
-      autofillDate () {
+      autofillDate: function () {
         this.siteVisitSummary['Date'] = moment().format('MM/DD/YYYY')
         this.siteVisitSummary['Start time'] = moment().format('hh:mm a')
+      },
+      quickSave: debounce(
+        function () { return true },
+        500
+      )
+    },
+    watch: {
+      siteVisitSummary: function () {
+        this.quickSave()
       }
     }
   }
 </script>
 
 <style scoped lang="stylus">
+  @require '../../style/variables'
+
+  .fab
+    position fixed
+    bottom 40px
+    right 40px
+    border-radius 50%
+    width 60px
+    height 60px
+    background-color theme-primary
+    color: black
+    img
+      margin-bottom -5px
 </style>
