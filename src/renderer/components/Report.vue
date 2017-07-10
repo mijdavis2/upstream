@@ -17,6 +17,9 @@
   import StreamflowData from './Report/StreamflowCalculator'
 
   export default {
-    components: { ReportMetadata, StreamflowData }
+    components: { ReportMetadata, StreamflowData },
+    data: () => ({
+      scrollPos: 0
+    })
   }
 </script>

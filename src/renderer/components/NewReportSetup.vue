@@ -21,11 +21,11 @@
           <div>
             <dl class="form-group mr-2">
               <dt><label>Start Bank</label></dt>
-              <dd><input type="number" v-model="startBank"></dd>
+              <dd><input type="number" step="0.01" v-model="startBank"></dd>
             </dl>
             <dl class="form-group">
               <dt><label>End Bank</label></dt>
-              <dd><input type="number" v-model="endBank"></dd>
+              <dd><input type="number" step="0.01" v-model="endBank"></dd>
             </dl>
           </div>
 
@@ -33,7 +33,7 @@
             <dt><label>Number of Stations</label></dt>
             <dd>
               <select class="form-select" v-model="selectedConfig">
-                <option v-for="config in stationConfigs" :value="config">
+                <option v-for="config in stationConfigs" :value="config" :selected="config.stations === 16">
                   {{ config.stations }} stations at {{ config.spacing }}
                 </option>
               </select>
@@ -89,6 +89,9 @@
         },
         set (bank) {
           this.$store.commit('UPDATE_END_BANK', bank)
+          if (this.startBank && bank > 0) {
+            this.$store.commit('UPDATE_STATION_CONFIG', this.stationConfigs[8])
+          }
         }
       },
       selectedConfig: {
@@ -109,7 +112,7 @@
           for (let i of range(settings.min, settings.max)) {
             const option = {
               stations: i,
-              spacing: Math.round(((parseInt(this.endBank) - parseInt(this.startBank)) / i) * 100) / 100
+              spacing: Math.round(((this.endBank - this.startBank) / i) * 100) / 100
             }
             computedConfigs.push(option)
           }
@@ -122,7 +125,7 @@
         const flowData = [
           {
             'station': 0,
-            'clock': '0',
+            'clock': moment().format('hh:mm a'),
             'tapeFt': this.startBank,
             'maxDepth': 0,
             'spins': 0,
@@ -135,9 +138,9 @@
             'station': flowData.length,
             'clock': '',
             'tapeFt': Math.round((flowData[i].tapeFt + this.selectedConfig.spacing) * 100) / 100,
-            'maxDepth': 0,
-            'spins': 0,
-            'timeSec': 0,
+            'maxDepth': null,
+            'spins': null,
+            'timeSec': null,
             'readingComments': ''
           })
         }
@@ -150,8 +153,8 @@
           'timeSec': 50,
           'readingComments': 'End bank'
         })
-        this.$store.commit('UPDATE_ROWS', flowData)
-        this.$store.commit('UPDATE_REPORT_ID', `${this.site.id}-${moment().format('DD-MM-YY-h.mm.ss')}`)
+        this.$store.commit('UPDATE_FLOW_DATA', flowData)
+        this.$store.commit('UPDATE_REPORT_ID', `${this.site.id}-${moment().valueOf()}`)
         this.$router.push('/report')
       }
     }

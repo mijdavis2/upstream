@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="flowTable">
     <h1 class="alt-h1 m-3">New Streamflow Calculation</h1>
     <div class="table-wrapper">
       <float-thead-table class="table table-sm table-striped table-bordered">
@@ -29,8 +29,9 @@
       </float-thead-table>
     </div>
     <br>
-    <div class="d-flex flex-row-reverse">
-      <button v-on:click="getResults">Calculate Discharge</button><br>
+    <div class="flex flex-row-reverse">
+      <button class="btn btn-large" v-on:click="getResults">Calculate Discharge</button><br>
+      <button class="btn btn-primary btn-large mr-3">Save</button>
     </div>
     <br>
     <div class="table-wrapper">
@@ -92,7 +93,7 @@
       totalDischarge: ''
     }),
     created () {
-      this.items = this.$store.getters.items.length > 0 ? this.$store.getters.items : mockData
+      this.items = this.$store.getters.flowData.length > 0 ? this.$store.getters.flowData : mockData
     },
     methods: {
       autofillClock (station) {
