@@ -90,6 +90,7 @@
       totalDischarge: ''
     }),
     created () {
+      // TODO: remove mock data fallback
       this.items = this.$store.getters.flowData.length > 0 ? this.$store.getters.flowData : mockData
     },
     computed: {

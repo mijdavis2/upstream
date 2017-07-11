@@ -1,6 +1,18 @@
-# upstream
+# UpStream
 
-> Streamflow calc utility for Trout Unlimited
+<p>
+  UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>.
+</p>
+
+
+> **CURRENTLY IN BETA**
+>
+>Missing features:
+>  - saving reports
+>  - loading reports
+>  - exporting reports as csv files
+>  - loading config files
+
 
 ## Requirements
 
@@ -28,26 +40,15 @@ yarn run lint
 
 ## Build
 
-`electron-packager ./ upstream --all --overwrite`
-
-## Specs
-
-_Just some notes on desired features_
-
-Inputs
-- startBank.tapeFt: int
-- endBank.tapeFt: int
-
-Output
-- numberOfStationOptions
-    - "If 14 stations, take measurements every x ft"
-    - "" same for 15-17+
-
-^ Click one of those options
-
-Output
-- table with tapeFt set for each station
-
----
+`yarn run build`
 
 This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+
+## License
+
+**Software:** [MIT (c) 2017](LICENSE)
+
+
+**Icons:**
+
+- <p class="source">Scroll icon made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
