@@ -3,8 +3,10 @@
     <header class="header">
       <nav class="topnav">
         <router-link class="brand" to="/"><b>UpStream</b></router-link>
-        <router-link to="/start">New Report</router-link>
-        <router-link to="/config">Configure</router-link>
+        <router-link to="/new">New</router-link>
+        <router-link to="/current">Current</router-link>
+        <router-link to="/load">Load</router-link>
+        <router-link class="float-right" to="/config">Config</router-link>
       </nav>
     </header>
     <div class="main-container">
@@ -57,6 +59,7 @@
     overflow-y scroll
     background-color #f1f1f1
   #app
+    height 100%
     margin-top 54px
   a
     color theme-primary
@@ -108,5 +111,7 @@
     color: black
     text-decoration: none
   .main-container
-    width 100%
+    height 100%
+  .form-select
+    background #fff
 </style>

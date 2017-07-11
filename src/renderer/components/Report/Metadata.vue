@@ -1,54 +1,70 @@
 <template>
-  <div class="p-3">
-    <div class="card p-3 bg-faded">
-      <h1>Site: {{ siteName }} - {{ siteId }}</h1>
+  <div class="p-1">
+    <div id="m0" class="card p-3 bg-faded">
+      <h1>Site: {{ siteData.siteName }} - {{ siteData.siteId }}</h1>
       <form>
-        <div v-scroll-spy="metadataScrollPos">
-          <h3 class="mt-3">Site Visit Summary</h3><hr>
-          <a class="btn btn-small mt-1" v-on:click="autofillDate">Autofill Datetime</a>
-          <div id="site-visit-summary" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(siteVisitSummary)" v-if="item !== 'Meter type'" class="form-group" style="width: 45%;">
+        <div v-scroll-spy="currentPosition">
+          <h3 id="m1"class="mt-3">Site Visit Summary</h3><hr>
+          <a id="m2" class="btn btn-small mt-1" v-on:click="autofillDate">Autofill Datetime</a>
+          <div id="m3" class="section flex flex-between flex-wrap">
+            <dl v-for="item of Object.keys(siteData.siteVisitSummary)"
+                v-if="item !== 'Meter type'" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
-              <dd><input class="form-control" type="text" v-model="siteVisitSummary[item]"></dd>
+              <dd v-if="!['Spin test at start', 'Spin test at end'].includes(item)">
+                <input class="form-control" type="text" v-model="siteData.siteVisitSummary[item]">
+              </dd>
+              <dd v-else>
+                <input type="checkbox" :id="`checkbox-${item}`"
+                       class="form-checkbox mr-3" v-model="siteData.siteVisitSummary[item]">
+                <label class="lead alt-text-small" :for="`checkbox-${item}`">(check for <em>YES</em>)</label>
+              </dd>
             </dl>
             <dl class="form-group">
               <dt><label>Meter type</label></dt>
               <dd>
-                <select class="form-select"
-                        v-model="siteVisitSummary['Meter type']">
+                <select class="form-select form-control"
+                        v-model="siteData.siteVisitSummary['Meter type']">
                   <option v-for="meter in meterTypes" :value="meter">{{ meter.name }}</option>
                 </select>
               </dd>
             </dl>
           </div>
 
-          <h3 class="mt-3">Channel Summary</h3><hr>
-          <div id="channel-summary" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(channelSummary)" class="form-group" style="width: 45%;">
+          <h3 id="m4" class="mt-3">Channel Summary</h3><hr>
+          <div id="m5" class="section flex flex-between flex-wrap">
+            <dl v-for="item of Object.keys(siteData.channelSummary)" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
-              <dd><input class="form-control" type="text" v-model="channelSummary[item]"></dd>
+              <dd v-if="!['Gauge operating', 'Data downloaded'].includes(item)">
+                <input class="form-control" type="text" v-model="siteData.channelSummary[item]">
+              </dd>
+              <dd v-else>
+                <input type="checkbox" :id="`checkbox-${item}`"
+                       class="form-checkbox mr-3" v-model="siteData.channelSummary[item]">
+                <label class="lead alt-text-small" :for="`checkbox-${item}`">(check for <em>YES</em>)</label>
+              </dd>
             </dl>
             <dl class="form-group" style="width: 100%;">
               <dt><label>Comments on rating</label></dt>
               <dd><textarea class="form-control" style="width: 100%;" type="text"
-                            v-model="channelSummary['Comments on rating']"></textarea></dd>
+                            v-model="siteData.channelSummary['Comments on rating']"></textarea></dd>
             </dl>
           </div>
 
-          <h3 class="mt-3">Comments</h3><hr>
-          <div id="comments" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(comments)" class="form-group" style="width: 45%;">
+          <h3 id="m6" class="mt-3">Comments</h3><hr>
+          <div id="m7" class="section flex flex-between flex-wrap">
+            <dl v-for="item of Object.keys(siteData.comments)" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
-              <dd><textarea class="form-control" type="text" v-model="comments[item]"></textarea></dd>
+              <dd><textarea class="form-control" type="text" v-model="siteData.comments[item]"></textarea></dd>
             </dl>
           </div>
         </div>
       </form>
     </div>
-    <a v-if="metadataScrollPos < 9" href="#flowTable" v-on:click="storedPosition = metadataScrollPos">
-      <button class="fab"><img height="30" src="~@/assets/scroll.svg" alt="electron-vue"></button></a>
-    <a v-else @click="$scrollTo(storedPosition)" href="#">
-      <button class="fab"><img height="30" src="~@/assets/scroll.svg" alt="electron-vue"></button>
+    <div v-on:scroll="location('#null')"></div>
+    <a v-if="currentPosition < 7" href="#" v-scroll-to="'#flowTable'" v-on:click="storedPosition = currentPosition">
+      <button class="fab"><img height="30" src="~@/assets/scroll.svg"></button></a>
+    <a v-else v-scroll-to="`#m${storedPosition}`" href="#">
+      <button class="fab"><img height="30" src="~@/assets/scroll.svg"></button>
     </a>
   </div>
 </template>
@@ -56,67 +72,89 @@
 <script>
   import moment from 'moment'
   import debounce from 'lodash.debounce'
+  import util from '@/util'
 
   export default {
     data: () => ({
-      metadataScrollPos: 0,
+      scrollImg: 'static/scroll.svg',
+      currentPosition: 0,
       storedPosition: 0,
-      siteName: '',
-      siteId: '',
-      siteVisitSummary: {
-        'Date': null,
-        'Start time': null,
-        'Field crew taking measurements': null,
-        'Field crew taking notes': null,
-        'Meter number': null,
-        'Spin test at start': null,
-        'Spin test at end': null,
-        'Measurement #': null,
-        'Atmospheric Cond': null,
-        'Staff Plate Reading': null,
-        'Meter type': {
-          name: 'Pygmy Meter'
+      siteData: {
+        siteName: '',
+        siteId: '',
+        siteVisitSummary: {
+          'Date': null,
+          'Field crew taking measurements': null,
+          'Start time': null,
+          'Field crew taking notes': null,
+          'Measurement #': null,
+          'Staff Plate Reading': null,
+          'Atmospheric Cond': null,
+          'Spin test at start': false,
+          'Meter number': null,
+          'Spin test at end': false,
+          'Meter type': {
+            name: 'Pygmy Meter',
+            const1: 0.9604,
+            const2: 0.0312
+          }
+        },
+        comments: { 'Site comments': null, 'Site repairs needed': null },
+        channelSummary: {
+          'Cross section location': null,
+          'Start edge': null,
+          'Cross section substrate': null,
+          'Right bank conditions': null,
+          'Grade control': null,
+          'Left bank conditions': null,
+          'Flow consistency': null,
+          'Gauge operating': null,
+          'Rated': null,
+          'Data downloaded': null
         }
-      },
-      comments: { 'Site comments': null, 'Site repairs needed': null },
-      channelSummary: {
-        'Cross section location': null,
-        'Cross section substrate': null,
-        'Grade control': null,
-        'Flow consistency': null,
-        'Start edge': null,
-        'Right bank conditions': null,
-        'Left bank conditions': null,
-        'Gauge operating': null,
-        'Data downloaded': null,
-        'Rated': null
       },
       meterTypes: [
         {
-          name: 'Pygmy Meter'
+          name: 'Pygmy Meter',
+          const1: 0.9604,
+          const2: 0.0312
         },
         {
-          name: 'AA Meter'
+          name: 'AA Meter',
+          const1: 2.2048,
+          const2: 0.0178
         }
       ]
     }),
     created () {
-      this.siteName = this.$store.getters.site.name
-      this.siteId = this.$store.getters.site.id
+      this.siteData.siteName = this.$store.getters.site.name
+      this.siteData.siteId = this.$store.getters.site.id
+      if (!this.siteData.siteVisitSummary.Date) {
+        this.autofillDate()
+      }
     },
     methods: {
       autofillDate: function () {
-        this.siteVisitSummary['Date'] = moment().format('MM/DD/YYYY')
-        this.siteVisitSummary['Start time'] = moment().format('hh:mm a')
+        this.siteData.siteVisitSummary['Date'] = moment().format('MM/DD/YYYY')
+        this.siteData.siteVisitSummary['Start time'] = moment().format('hh:mm a')
       },
       quickSave: debounce(
-        function () { return true },
+        function () {
+          util.saveTmp(this.$store.getters.recordId, this.siteData)
+          this.$store.commit('UPDATE_SITE_DATA', this.siteData)
+        },
         500
-      )
+      ),
+      location: function (id) {
+        this.storedPosition = id
+      }
     },
     watch: {
-      siteVisitSummary: function () {
-        this.quickSave()
+      siteData: {
+        handler (val) {
+          this.quickSave()
+        },
+        deep: true
       }
     }
   }
@@ -127,13 +165,21 @@
 
   .fab
     position fixed
-    bottom 40px
-    right 40px
+    bottom 34px
+    right 34px
     border-radius 50%
     width 60px
     height 60px
     background-color theme-primary
     color: black
+    z-index 9999
     img
       margin-bottom -5px
+
+  .form-checkbox
+    margin-left 12px
+    transform scale(2.5)
+
+  textarea
+    max-height 120px
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="pl-3 pt-3 report-header">
+    <div class="pl-1 pt-3 report-header">
       <h1 class="alt-h1">Report {{ $store.getters.reportId }}</h1>
     </div>
     <div class="report-metadata">
@@ -17,9 +17,6 @@
   import StreamflowData from './Report/StreamflowCalculator'
 
   export default {
-    components: { ReportMetadata, StreamflowData },
-    data: () => ({
-      scrollPos: 0
-    })
+    components: { ReportMetadata, StreamflowData }
   }
 </script>
