@@ -1,5 +1,5 @@
 <template>
-  <div id="flowTable">
+  <div class="p-1" id="flowTable">
     <h1 class="alt-h1 m-3">New Streamflow Calculation</h1>
     <div class="table-wrapper">
       <float-thead-table class="table table-sm table-striped table-bordered">
@@ -30,7 +30,7 @@
     </div>
     <br>
     <div class="flex flex-row-reverse">
-      <button class="btn btn-large" v-on:click="getResults">Calculate Discharge</button><br>
+      <button class="btn btn-large mr-3" v-on:click="getResults">Calculate Discharge</button><br>
       <button class="btn btn-primary btn-large mr-3">Save</button>
     </div>
     <br>
@@ -44,11 +44,11 @@
         <tbody>
         <tr v-for="item of results">
           <th scope="row">{{ item.station }}</th>
-          <td>{{ item.ftPerSec }}</td>
-          <td>{{ item.stationFt }}</td>
-          <td>{{ item.widthFt }}</td>
-          <td>{{ item.q }}</td>
-          <td>{{ item.qCol }}</td>
+          <td>{{ Math.round(parseFloat(item.ftPerSec) * 100) / 100 }}</td>
+          <td>{{ Math.round(parseFloat(item.stationFt) * 100) / 100 }}</td>
+          <td>{{ Math.round(parseFloat(item.widthFt) * 100) / 100 }}</td>
+          <td>{{ Math.round(parseFloat(item.q) * 100) / 100 }}</td>
+          <td>{{ Math.round(parseFloat(item.qCol) * 100) / 100 }}</td>
           <td>{{ Math.round(item.percentFlow) }}%</td>
         </tr>
         </tbody>
@@ -61,9 +61,6 @@
 <script>
   import mockData from '../mockData.json'
   import moment from 'moment'
-
-  const VAL_1 = 0.9604
-  const VAL_2 = 0.0312
 
   export default {
     data: () => ({
@@ -82,7 +79,7 @@
         'Reading Comments'
       ],
       resultFields: [
-        'Station',
+        'St',
         'ft/sec',
         'station, ft',
         'width, ft',
@@ -95,6 +92,11 @@
     created () {
       this.items = this.$store.getters.flowData.length > 0 ? this.$store.getters.flowData : mockData
     },
+    computed: {
+      meterVars: function () {
+        return this.$store.getters.meterVars
+      }
+    },
     methods: {
       autofillClock (station) {
         this.items[station].clock = moment().format('hh:mm a')
@@ -103,7 +105,7 @@
         if (!spins || !timeSec) {
           return 0
         }
-        return VAL_1 * (spins / timeSec) + VAL_2
+        return this.meterVars.const1 * (spins / timeSec) + this.meterVars.const2
       },
       getStationFt (currentTape, firstTape) {
         return Math.round((currentTape - firstTape) * 100) / 100

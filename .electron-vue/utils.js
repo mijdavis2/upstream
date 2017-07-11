@@ -46,7 +46,7 @@ exports.cssLoaders = function (options) {
       includePaths: ['node_modules']
     }),
     scss: generateLoaders('sass', {
-      includePaths: ['node_modules'],
+      includePaths: ['node_modules']
     }),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')

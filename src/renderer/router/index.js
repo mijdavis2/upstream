@@ -4,14 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  scrollBehavior: function (to, from, savedPosition) {
-    if (to.hash) {
-      return {selector: to.hash}
-    } else {
-      return {x: 0, y: 0}
-    }
-  },
   routes: [
     {
       path: '/',
@@ -19,18 +11,14 @@ export default new Router({
       component: require('@/components/LandingPage')
     },
     {
-      path: '/start',
-      name: 'start',
+      path: '/new',
+      name: 'new',
       component: require('@/components/NewReportSetup')
     },
     {
       path: '/report',
       name: 'report',
       component: require('@/components/Report')
-    },
-    {
-      path: '*',
-      redirect: '/'
     }
   ]
 })

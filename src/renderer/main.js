@@ -6,7 +6,11 @@ import router from './router'
 import store from './store'
 import FloatThead from 'vue-floatthead'
 import Scrollspy from 'vue2-scrollspy'
+import VueScrollTo from 'vue-scrollto'
 
+Vue.use(VueScrollTo, {
+  duration: 10
+})
 Vue.use(FloatThead)
 Vue.use(Scrollspy)
 
