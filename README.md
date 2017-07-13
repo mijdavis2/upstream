@@ -13,15 +13,40 @@
 >  - exporting reports as csv files
 >  - loading config files
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-## Requirements
+- [Install and Run](#install-and-run)
+- [Develop](#develop)
+  - [Requirements](#requirements)
+- [Build](#build)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+## Install and Run
+
+**Install**
+
+1. Go to [releases page](https://github.com/mijdavis2/upstream/releases)
+and download the appropriate package.
+1. Extract the zip
+
+**Run**
+
+1. Run the executable (called `upstream`(.something) depending on OS and click through all the warnings.
+
+## Develop
+
+
+### Requirements
 
 - node 7+
 - yarn
 
 > Note: Linux dev environment is preferred
-
-## Develop
 
 ``` bash
 # install dependencies
