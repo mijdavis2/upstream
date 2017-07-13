@@ -25,6 +25,7 @@
     "postinstall": "npm run lint:fix"
   },
   "dependencies": {
+    "ajv": "^5.2.2",
     "axios": "^0.16.1",
     "fs": "^0.0.1-security",
     "lodash.debounce": "^4.0.8",

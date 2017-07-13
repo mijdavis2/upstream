@@ -1,3 +1,6 @@
+import env from '@/env'
+const fs = require('fs')
+
 const state = {
   sites: [],
   setupSettings: { min: 8, max: 25 }
@@ -15,6 +18,11 @@ const getters = {
 const mutations = {
   SET_SITES (state, payload) {
     state.sites = payload
+    if (payload !== undefined) {
+      fs.writeFileSync(env.siteConfigPath, JSON.stringify(payload))
+    } else {
+      fs.writeFileSync(env.siteConfigPath, JSON.stringify([]))
+    }
   },
   SET_SETUP_SETTINGS (state, payload) {
     state.setupSettings = payload

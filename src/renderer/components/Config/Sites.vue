@@ -1,28 +1,108 @@
 <template>
-  <h2>Sites</h2>
-  <ul>
-    <li v-for="site in sites">{{ site.name }} - {{ site.id }} <button @click="removeSite(site)">Remove</button></li>
-  </ul>
-  <button @click="addNewSite">+ New</button>
-  <button @click="saveSites">Save</button>
+  <div>
+    <div class="flex flex-between m-3">
+      <div>
+        <h2>Sites</h2>
+      </div>
+      <div>
+        <button class="btn btn-outline" @click="loadFromFile">Load from file</button>
+        <button class="btn btn-primary" @click="addNewSite">+ New</button>
+      </div>
+    </div>
+    <nav class="menu m-1">
+      <div class="p-3 menu-item flex flex-between" v-if="addingSite">
+        <span>
+          Name: <input type="text" v-model="newSite.name">
+          ID: <input type="text" v-model="newSite.id">
+        </span>
+        <span><button class="btn btn-outline" @click="saveSites">Save</button></span>
+      </div>
+      <div class="p-3 menu-item flex flex-between" v-for="site in computedSites">
+        <span>{{ site.name }} - {{ site.id }}</span>
+        <span><button class="btn btn-sm btn-danger" @click="removeSite(site)">Remove</button></span>
+      </div>
+    </nav>
+  </div>
 </template>
 
 <script>
+  const { app, dialog } = require('electron').remote
+  const fs = require('fs')
+  const Ajv = require('ajv')
+  const ajv = new Ajv({allErrors: true})
+
   export default {
     data: () => ({
-      sites: [],
-      addingSite: false
+      addingSite: false,
+      newSite: {
+        name: '',
+        id: ''
+      }
     }),
-    created () {
-      this.sites = this.$store.getters.sites
-    },
     methods: {
       addNewSite () {
         this.addingSite = true
       },
       saveSites () {
-        return ''
+        if (this.sites === undefined) {
+          this.sites = []
+        }
+        this.$store.commit('SET_SITES', this.computedSites.concat([this.newSite]))
+        this.addingSite = false
+      },
+      removeSite (site) {
+        this.$store.commit('SET_SITES',
+          this.computedSites.filter(function (el) {
+            return el !== site
+          })
+        )
+      },
+      loadFromFile () {
+        const vm = this
+        dialog.showOpenDialog({
+          defaultPath: `${app.getPath('home')}`,
+          filters: [
+            {name: 'json', extensions: ['json']}
+          ]
+        }, function (fileNames) {
+          if (fileNames === undefined) return
+          const schema = {
+            properties: {
+              name: { type: 'string' },
+              id: { type: 'string' }
+            }
+          }
+          const validate = ajv.compile(schema)
+          let fileName = fileNames[0]
+          fs.readFile(fileName, 'utf-8', (err, data) => {
+            console.log(err)
+            data = JSON.parse(data)
+            console.log(data)
+            let result
+            for (let site of data) {
+              (!validate(site)) ? result = false : result = true
+            }
+            if (result) {
+              vm.$store.commit('SET_SITES', data)
+            }
+          })
+        })
+      }
+    },
+    computed: {
+      computedSites () {
+        const sites = this.$store.getters.sites
+        // Reset newSite when it is added to sites
+        if (sites.indexOf(this.newSite) > -1) {
+          this.newSite = {name: '', id: ''}
+        }
+        return sites
       }
     }
   }
 </script>
+
+<style scoped lang="stylus">
+  .menu-item
+    line-height 34px
+</style>
