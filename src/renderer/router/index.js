@@ -19,6 +19,15 @@ export default new Router({
       path: '/report',
       name: 'report',
       component: require('@/components/Report')
+    },
+    {
+      path: '/config',
+      name: 'config',
+      component: require('@/components/Config'),
+      children: [
+        { path: '', redirect: 'sites' },
+        { path: 'sites', component: require('@/components/Config/Sites') }
+      ]
     }
   ]
 })

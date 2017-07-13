@@ -7,6 +7,7 @@
         <router-link to="/current">Current</router-link>
         <router-link to="/load">Load</router-link>
         <router-link class="float-right" to="/config">Config</router-link>
+        <a class="float-right" v-on:click="openFile">Config</a>
       </nav>
     </header>
     <div class="main-container">
@@ -16,7 +17,8 @@
 </template>
 
 <script>
-  const { app } = require('electron').remote
+  import env from './env'
+  const { app, dialog } = require('electron').remote
   const fs = require('fs')
 
   export default {
@@ -26,20 +28,35 @@
     },
     methods: {
       checkSiteConfig () {
-        const configBasePath = `${app.getPath('userData')}/upstream`
-        const siteConfigPath = `${configBasePath}/sites.json`
-        if (fs.existsSync(siteConfigPath)) {
-          const siteConfig = JSON.parse(fs.readFileSync(siteConfigPath, 'utf8'))
-          this.$store.commit('SET_SITES', siteConfig.sites)
+        if (fs.existsSync(env.siteConfigPath)) {
+          const siteConfig = JSON.parse(fs.readFileSync(env.siteConfigPath, 'utf8'))
+          console.log(siteConfig)
+          this.$store.commit('SET_SITES', siteConfig)
         } else {
-          const siteConfig = { sites: [{ name: 'Test Site', id: 'TS' }] }
-          fs.existsSync(configBasePath) || fs.mkdirSync(configBasePath)
-          fs.writeFileSync(siteConfigPath, JSON.stringify(siteConfig))
-          this.$store.commit('SET_SITES', siteConfig.sites)
+          const siteConfig = [{name: 'Test Site', id: 'TS'}]
+          fs.existsSync(env.configBasePath) || fs.mkdirSync(env.configBasePath)
+          fs.writeFileSync(env.siteConfigPath, JSON.stringify(siteConfig))
+          this.$store.commit('SET_SITES', siteConfig)
         }
+      },
+      openFile () {
+        dialog.showOpenDialog({
+          defaultPath: `${app.getPath('userData')}/upstream`,
+          filters: [
+            {name: 'json', extensions: ['json']}
+          ]
+        }, function (fileNames) {
+          if (fileNames === undefined) return
+          let fileName = fileNames[0]
+          fs.readFile(fileName, 'utf-8', (err, data) => {
+            console.log(err)
+            console.log(data)
+          })
+        })
       }
     }
   }
+
 </script>
 
 <style lang="scss">
