@@ -30,23 +30,23 @@
 
 **Install**
 
-1. Go to [releases page](https://github.com/mijdavis2/upstream/releases)
-and download the appropriate package.
+1. Go to the [releases page](https://github.com/mijdavis2/upstream/releases)
+and download the appropriate package
 1. Extract the zip
 
 **Run**
 
-1. Run the executable (called `upstream`(.something) depending on OS and click through all the warnings.
+1. Run the executable (called `upstream[.something]` depending on OS and click through all the warnings.
 
 ## Develop
+
+> This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
 
 
 ### Requirements
 
 - node 7+
 - yarn
-
-> Note: Linux dev environment is preferred
 
 ``` bash
 # install dependencies
@@ -63,11 +63,11 @@ yarn run lint
 
 ```
 
-## Build
+### Build
 
-`yarn run build`
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+```
+yarn run build
+```
 
 ## License
 
