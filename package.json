@@ -1,6 +1,6 @@
 {
   "name": "upstream",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "mijdavis2",
   "description": "Streamflow calc utility for Trout Unlimited",
   "license": "MIT",
