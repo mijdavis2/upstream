@@ -12,18 +12,18 @@
           <tr v-for="item of items">
             <th scope="row">{{ item.station }}</th>
             <td>
-              <input class="stream-input" type="text" v-model="item.clock">
-              <button class="btn btn-small" v-on:click="autofillClock(item.station)">Auto</button></td>
+              <input class="stream-input" type="text" :id="`Clock-${item.station}`" :value="item.clock" @input="updateClock(item.station)">
+              <button class="btn btn-small" v-on:click="autofillClock(time.station)">Auto</button></td>
             <td>
-              <input class="stream-input" type="number" v-model="item.tapeFt"></td>
+              <input class="stream-input" type="number" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
             <td>
-              <input class="stream-input" type="number" v-model="item.maxDepth"></td>
+              <input class="stream-input" type="number" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></td>
             <td>
-              <input class="stream-input" type="number" v-model="item.spins"></td>
+              <input class="stream-input" type="number" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></td>
             <td>
-              <input class="stream-input" type="number" v-model="item.timeSec"></td>
+              <input class="stream-input" type="number" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></td>
             <td>
-              <textarea v-model="item.readingComments"></textarea></td>
+              <textarea :id="`ReadingComments-${item.station}`" :value="item.readingComments" @input="updateReadingComments(item.station)"></textarea></td>
           </tr>
         </tbody>
       </float-thead-table>
@@ -59,15 +59,14 @@
 </template>
 
 <script>
-  import mockData from '../mockData.json'
   import moment from 'moment'
+  import debounce from 'lodash.debounce'
 
   export default {
     data: () => ({
       currentPage: 1,
       perPage: 5,
       filter: null,
-      items: [],
       results: [],
       fields: [
         'St',
@@ -89,16 +88,33 @@
       ],
       totalDischarge: ''
     }),
-    created () {
-      // TODO: remove mock data fallback
-      this.items = this.$store.getters.flowData.length > 0 ? this.$store.getters.flowData : mockData
-    },
     computed: {
       meterVars: function () {
         return this.$store.getters.meterVars
+      },
+      items: function () {
+        return this.$store.getters.flowData
       }
     },
     methods: {
+      updateClock (station) {
+        this.$store.commit('updateClock', {station: station, val: document.getElementById(`Clock-${station}`).value})
+      },
+      updateTapeFt (station) {
+        this.$store.commit('updateTapeFt', {station: station, val: document.getElementById(`TapeFt-${station}`).value})
+      },
+      updateMaxDepth (station) {
+        this.$store.commit('updateMaxDepth', {station: station, val: document.getElementById(`MaxDepth-${station}`).value})
+      },
+      updateSpins (station) {
+        this.$store.commit('updateSpins', {station: station, val: document.getElementById(`Spins-${station}`).value})
+      },
+      updateTimeSec (station) {
+        this.$store.commit('updateTimeSec', {station: station, val: document.getElementById(`TimeSec-${station}`).value})
+      },
+      updateReadingComments (station) {
+        this.$store.commit('updateReadingComments', {station: station, val: document.getElementById(`ReadingComments-${station}`).value})
+      },
       autofillClock (station) {
         this.items[station].clock = moment().format('hh:mm a')
       },
@@ -203,6 +219,23 @@
             })
           }
         })
+      },
+      quickSave: debounce(
+        function () {
+          this.$store.dispatch('quickSaveToTmpFile')
+        },
+        500
+      ),
+      location: function (id) {
+        this.storedPosition = id
+      }
+    },
+    watch: {
+      items: {
+        handler (val) {
+          this.quickSave()
+        },
+        deep: true
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="p-1">
     <div id="m0" class="card p-3 bg-faded">
-      <h1>Site: {{ siteData.siteName }} - {{ siteData.siteId }}</h1>
+      <h1>{{ siteData.siteName }} - {{ siteData.siteId }}</h1>
       <form>
         <div v-scroll-spy="currentPosition">
           <h3 id="m1"class="mt-3">Site Visit Summary</h3><hr>
@@ -72,7 +72,6 @@
 <script>
   import moment from 'moment'
   import debounce from 'lodash.debounce'
-  import util from '@/util'
 
   export default {
     data: () => ({
@@ -127,6 +126,9 @@
       ]
     }),
     created () {
+      if (!this.$store.getters.site) {
+        this.$router.push('/')
+      }
       this.siteData.siteName = this.$store.getters.site.name
       this.siteData.siteId = this.$store.getters.site.id
       if (!this.siteData.siteVisitSummary.Date) {
@@ -140,8 +142,8 @@
       },
       quickSave: debounce(
         function () {
-          util.saveTmp(this.$store.getters.recordId, this.siteData)
           this.$store.commit('UPDATE_SITE_DATA', this.siteData)
+          this.$store.dispatch('quickSaveToTmpFile')
         },
         500
       ),

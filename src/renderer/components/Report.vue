@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="pl-1 pt-3 report-header">
-      <h1 class="alt-h1">Report {{ $store.getters.reportId }}</h1>
+      <h1 class="m-2 alt-h1">Report {{ $store.getters.reportId }}</h1>
     </div>
     <div class="report-metadata">
       <report-metadata></report-metadata>

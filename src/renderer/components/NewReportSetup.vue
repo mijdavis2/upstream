@@ -13,7 +13,7 @@
                 <option v-for="site in sites" :value="site">{{ site.name }} - {{ site.id }}</option>
               </select>
               <span class="input-group-button">
-                <router-link class="btn" to="/config/sites">+ New Site</router-link>
+                <router-link class="btn" to="/config/sites?new=true">+ New Site</router-link>
               </span>
             </dd>
           </dl>
