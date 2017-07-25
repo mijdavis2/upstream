@@ -18,7 +18,10 @@
         <span><button class="btn btn-outline" @click="saveSites">Save</button></span>
       </div>
       <div class="p-3 menu-item flex flex-between" v-for="site in computedSites">
-        <span>{{ site.name }} - {{ site.id }}</span>
+        <div class="flex flex-between">
+          <div class="listed-site-id">{{ site.id }}</div>
+          <span> - {{ site.name }}</span>
+        </div>
         <span><button class="btn btn-sm btn-danger" @click="removeSite(site)">Remove</button></span>
       </div>
     </nav>
@@ -117,4 +120,6 @@
 <style scoped lang="stylus">
   .menu-item
     line-height 34px
+  .listed-site-id
+    min-width 40px
 </style>

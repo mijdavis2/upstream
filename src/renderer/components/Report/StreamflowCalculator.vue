@@ -1,6 +1,6 @@
 <template>
   <div class="p-1" id="flowTable">
-    <h1 class="alt-h1 m-3">New Streamflow Calculation</h1>
+    <h1 class="alt-h1 m-3">Streamflow Input</h1>
     <div class="table-wrapper">
       <float-thead-table class="table table-sm table-striped table-bordered">
         <thead class="thead-inverse">
@@ -29,6 +29,7 @@
       </float-thead-table>
     </div>
     <br>
+    <h1 class="alt-h1 m-3">Streamflow Results</h1>
     <div class="flex flex-row-reverse">
       <button v-if="results.length > 0" class="btn btn-primary btn-large mr-3" @click="save">Save</button>
       <button class="btn btn-large mr-3" v-on:click="getResults">Calculate Discharge</button>
