@@ -30,8 +30,8 @@
     </div>
     <br>
     <div class="flex flex-row-reverse">
-      <button class="btn btn-large mr-3" v-on:click="getResults">Calculate Discharge</button><br>
-      <button class="btn btn-primary btn-large mr-3">Save</button>
+      <button v-if="results.length > 0" class="btn btn-primary btn-large mr-3" @click="save">Save</button>
+      <button class="btn btn-large mr-3" v-on:click="getResults">Calculate Discharge</button>
     </div>
     <br>
     <div class="table-wrapper">
@@ -61,6 +61,7 @@
 <script>
   import moment from 'moment'
   import debounce from 'lodash.debounce'
+  const { app, dialog } = require('electron').remote
 
   export default {
     data: () => ({
@@ -98,22 +99,40 @@
     },
     methods: {
       updateClock (station) {
-        this.$store.commit('updateClock', {station: station, val: document.getElementById(`Clock-${station}`).value})
+        this.$store.commit('updateClock', {
+          station: station,
+          val: document.getElementById(`Clock-${station}`).value
+        })
       },
       updateTapeFt (station) {
-        this.$store.commit('updateTapeFt', {station: station, val: document.getElementById(`TapeFt-${station}`).value})
+        this.$store.commit('updateTapeFt', {
+          station: station,
+          val: document.getElementById(`TapeFt-${station}`).value
+        })
       },
       updateMaxDepth (station) {
-        this.$store.commit('updateMaxDepth', {station: station, val: document.getElementById(`MaxDepth-${station}`).value})
+        this.$store.commit('updateMaxDepth', {
+          station: station,
+          val: document.getElementById(`MaxDepth-${station}`).value
+        })
       },
       updateSpins (station) {
-        this.$store.commit('updateSpins', {station: station, val: document.getElementById(`Spins-${station}`).value})
+        this.$store.commit('updateSpins', {
+          station: station,
+          val: document.getElementById(`Spins-${station}`).value
+        })
       },
       updateTimeSec (station) {
-        this.$store.commit('updateTimeSec', {station: station, val: document.getElementById(`TimeSec-${station}`).value})
+        this.$store.commit('updateTimeSec', {
+          station: station,
+          val: document.getElementById(`TimeSec-${station}`).value
+        })
       },
       updateReadingComments (station) {
-        this.$store.commit('updateReadingComments', {station: station, val: document.getElementById(`ReadingComments-${station}`).value})
+        this.$store.commit('updateReadingComments', {
+          station: station,
+          val: document.getElementById(`ReadingComments-${station}`).value
+        })
       },
       autofillClock (station) {
         this.items[station].clock = moment().format('hh:mm a')
@@ -129,7 +148,7 @@
       },
       getWidthFt (currentStationFt, previousStationFt, nextStationFt) {
         return Math.round(
-          (((currentStationFt - previousStationFt) / 2) + ((nextStationFt - currentStationFt) / 2)) * 100
+            (((currentStationFt - previousStationFt) / 2) + ((nextStationFt - currentStationFt) / 2)) * 100
           ) / 100
       },
       getQ (ftPerSec, maxDepth) {
@@ -215,6 +234,7 @@
                 for (let item of vm.results) {
                   item.percentFlow = vm.getPercentFlow(item.qCol, totalDischarge)
                 }
+                vm.$store.commit('UPDATE_RESULTS', vm.results)
               }
             })
           }
@@ -228,14 +248,27 @@
       ),
       location: function (id) {
         this.storedPosition = id
-      }
-    },
-    watch: {
-      items: {
-        handler (val) {
-          this.quickSave()
-        },
-        deep: true
+      },
+      save: function () {
+        this.$store.commit('UPDATE_RESULTS', this.results)
+        const vm = this
+        dialog.showSaveDialog({
+          defaultPath: `${app.getPath('documents')}`,
+          filters: [
+            {name: 'json', extensions: ['json']}
+          ]
+        }, function (fileName) {
+          if (fileName === undefined) return
+          vm.$store.dispatch('saveAs', fileName)
+        })
+      },
+      watch: {
+        items: {
+          handler (val) {
+            this.quickSave()
+          },
+          deep: true
+        }
       }
     }
   }

@@ -47,7 +47,10 @@
                 type: 'error',
                 message: 'Invalid file. Check for valid json. Each report must have a reportId, siteData, and flowData.'
               })
-            } else vm.$store.dispatch('loadReport', data)
+            } else {
+              vm.$store.dispatch('loadReport', data)
+              vm.$router.push('/report')
+            }
           })
         })
       }
