@@ -7,7 +7,7 @@ USER=$(cat package.json | jq -r '.author')
 REPO=$(cat package.json | jq -r '.name')
 
 # Release packaged application
-#yarn run build && \
+yarn run build && \
 
 zip -r build/upstream-linux-x64.zip build/upstream-linux-x64/
 zip -r build/upstream-darwin-x64.zip build/upstream-darwin-x64/

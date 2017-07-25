@@ -8,10 +8,7 @@
 > **CURRENTLY IN BETA**
 >
 >Missing features:
->  - saving reports
->  - loading reports
 >  - exporting reports as csv files
->  - loading config files -- *__staged!__*
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
