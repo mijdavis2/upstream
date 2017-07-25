@@ -78,11 +78,18 @@
             console.log(err)
             data = JSON.parse(data)
             console.log(data)
-            let result
-            for (let site of data) {
-              (!validate(site)) ? result = false : result = true
+            const result = function () {
+              for (let site of data) {
+                if (!validate(site) || !Object.keys(site).includes('name') || !Object.keys(site).includes('id')) {
+                  dialog.showMessageBox({
+                    type: 'error',
+                    message: 'Invalid file. Check for valid json. Each site must have a name and id.'
+                  })
+                  return 'bogus'
+                }
+              }
             }
-            if (result) {
+            if (result() !== 'bogus') {
               vm.$store.commit('SET_SITES', data)
             }
           })
