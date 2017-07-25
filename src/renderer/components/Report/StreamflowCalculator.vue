@@ -13,7 +13,7 @@
             <th scope="row">{{ item.station }}</th>
             <td>
               <input class="stream-input" type="text" :id="`Clock-${item.station}`" :value="item.clock" @input="updateClock(item.station)">
-              <button class="btn btn-small" v-on:click="autofillClock(time.station)">Auto</button></td>
+              <button class="btn btn-small" v-on:click="autofillClock(item.station)">Auto</button></td>
             <td>
               <input class="stream-input" type="number" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
             <td>

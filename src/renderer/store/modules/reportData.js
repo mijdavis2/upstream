@@ -1,5 +1,3 @@
-import util from '@/util'
-
 const state = {
   reportId: null,
   siteData: {},
@@ -57,19 +55,8 @@ const mutations = {
   }
 }
 
-const actions = {
-  quickSaveToTmpFile ({getters}) {
-    util.saveTmp(getters.reportId, {
-      reportId: getters.reportId,
-      siteData: getters.siteData,
-      flowData: getters.flowData
-    })
-  }
-}
-
 export default {
   state,
   getters,
-  mutations,
-  actions
+  mutations
 }

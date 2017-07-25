@@ -21,6 +21,11 @@ export default new Router({
       component: require('@/components/Report')
     },
     {
+      path: '/load',
+      name: 'load',
+      component: require('@/components/Load')
+    },
+    {
       path: '/config',
       name: 'config',
       component: require('@/components/Config'),
