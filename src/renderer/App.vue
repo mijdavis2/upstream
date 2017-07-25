@@ -6,8 +6,8 @@
         <router-link to="/new">New</router-link>
         <router-link to="/current">Current</router-link>
         <router-link to="/load">Load</router-link>
-        <router-link class="float-right" to="/config">Config</router-link>
-        <a class="float-right" v-on:click="openFile">Config</a>
+        <router-link to="/config">Config</router-link>
+        <a class="time float-right">{{ dateNow }}</a>
       </nav>
     </header>
     <div class="main-container">
@@ -18,15 +18,27 @@
 
 <script>
   import env from './env'
+  import moment from 'moment'
   const { app, dialog } = require('electron').remote
   const fs = require('fs')
 
   export default {
     name: 'upstream',
+    data: () => ({
+      dateNow: ''
+    }),
+    mounted () {
+      let vm = this
+      this.time()
+      setInterval(vm.time, 5000)
+    },
     created () {
       this.checkSiteConfig()
     },
     methods: {
+      time () {
+        this.dateNow = moment().format('MM/DD/YY h:mm')
+      },
       checkSiteConfig () {
         if (fs.existsSync(env.siteConfigPath)) {
           const siteConfig = JSON.parse(fs.readFileSync(env.siteConfigPath, 'utf8'))
@@ -131,4 +143,10 @@
     height 100%
   .form-select
     background #fff
+  .time
+    background-color #545454
+    &:hover
+      text-decoration none
+      background-color #545454 !important
+      color white !important
 </style>
