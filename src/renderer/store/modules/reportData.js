@@ -1,3 +1,5 @@
+import util from '@/util'
+
 const state = {
   reportId: null,
   siteData: {},
@@ -34,11 +36,40 @@ const mutations = {
   },
   UPDATE_SITE_DATA (state, payload) {
     state.siteData = payload
+  },
+  updateClock (state, payload) {
+    state.flowData[payload.station].clock = payload.val
+  },
+  updateTapeFt (state, payload) {
+    state.flowData[payload.station].tapeFt = payload.val
+  },
+  updateMaxDepth (state, payload) {
+    state.flowData[payload.station].maxDepth = payload.val
+  },
+  updateSpins (state, payload) {
+    state.flowData[payload.station].spins = payload.val
+  },
+  updateTimeSec (state, payload) {
+    state.flowData[payload.station].timeSec = payload.val
+  },
+  updateReadingComments (state, payload) {
+    state.flowData[payload.station].readingComments = payload.val
+  }
+}
+
+const actions = {
+  quickSaveToTmpFile ({getters}) {
+    util.saveTmp(getters.reportId, {
+      reportId: getters.reportId,
+      siteData: getters.siteData,
+      flowData: getters.flowData
+    })
   }
 }
 
 export default {
   state,
   getters,
-  mutations
+  mutations,
+  actions
 }

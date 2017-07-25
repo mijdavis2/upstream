@@ -39,6 +39,11 @@
         id: ''
       }
     }),
+    created () {
+      if (this.$route.query.new) {
+        this.addingSite = true
+      }
+    },
     methods: {
       addNewSite () {
         this.addingSite = true
