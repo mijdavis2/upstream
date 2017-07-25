@@ -1,12 +1,16 @@
 const state = {
   reportId: null,
   siteData: {},
-  flowData: []
+  flowData: [],
+  results: []
 }
 
 const getters = {
   flowData (state) {
     return state.flowData
+  },
+  results (state) {
+    return state.results
   },
   reportId (state) {
     return state.reportId
@@ -34,6 +38,9 @@ const mutations = {
   },
   UPDATE_SITE_DATA (state, payload) {
     state.siteData = payload
+  },
+  UPDATE_RESULTS (state, payload) {
+    state.results = payload
   },
   updateClock (state, payload) {
     state.flowData[payload.station].clock = payload.val

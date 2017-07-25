@@ -8,5 +8,8 @@ export default {
   saveTmp: function (recordId, reportData) {
     const tmpPath = `${configBasePath}/${recordId}.json`
     fs.writeFileSync(tmpPath, JSON.stringify(reportData))
+  },
+  saveAs: function (fileName, reportData) {
+    fs.writeFileSync(fileName, JSON.stringify(reportData))
   }
 }
