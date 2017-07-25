@@ -31,7 +31,8 @@ export default new Router({
       component: require('@/components/Config'),
       children: [
         { path: '', redirect: 'sites' },
-        { path: 'sites', component: require('@/components/Config/Sites') }
+        { path: 'sites', component: require('@/components/Config/Sites') },
+        { path: 'email', component: require('@/components/Config/Email') }
       ]
     }
   ]

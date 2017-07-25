@@ -5,7 +5,7 @@
       <!--<div><h1 class="alt-h1 logo-name">UpStream</h1></div>-->
     <!--</div>-->
     <main class="flex flex-between">
-      <div class="flex flex-column flex-sm">
+      <div class="flex flex-column flex-sm p-2">
         <h2 class="alt-h2 mb-1">
           <b>Welcome to UpStream!</b>
         </h2>
@@ -16,15 +16,17 @@
         <br>
       </div>
 
-      <div class="flex-sm">
+      <div class="flex-sm p-2">
         <div class="doc">
           <h2 class="alt-h2 mb-1"><b>Getting Started</b></h2>
           <p>
             UpStream will generate a table for you to input stream flow data based on a series of options.
           </p>
           <p>
-            You will be able to add metadata such as site name, id, comments, etc prior to or after
-            filling out the stream flow data.
+            You will be able to add update site data while updating stream flow data.
+            UpStream saves on every keystroke so
+            you can recover partially completed reports if the app crashes
+            or your device loses battery.
           </p>
           <p>
             Click <b><i>Start new report</i></b> below to begin!
@@ -37,7 +39,7 @@
     <br>
     <hr>
     <main class="flex flex-between">
-      <div class="flex-sm">
+      <div class="flex-sm p-2">
         <div class="doc">
           <h2 class="alt-h2 mb-1"><b>Report issues or request features</b></h2>
           <p>
@@ -56,9 +58,9 @@
         <br>
       </div>
 
-        <div class="flex-sm ml-3">
-          <system-information></system-information>
-        </div>
+      <div class="flex-sm ml-3 p-2">
+        <system-information></system-information>
+      </div>
     </main>
     <br>
     <div class="source">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

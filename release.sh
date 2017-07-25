@@ -19,7 +19,7 @@ github-release release \
     --repo ${REPO} \
     --tag ${VERSION} \
     --name "${VERSION}" \
-    --description $1 \
+    --description "$1" \
     --pre-release
 
 github-release upload \

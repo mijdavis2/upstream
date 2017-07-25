@@ -4,5 +4,6 @@ const configBase = `${app.getPath('userData')}/upstream`
 
 export default {
   configBasePath: configBase,
-  siteConfigPath: `${configBase}/sites.json`
+  siteConfigPath: `${configBase}/sites.json`,
+  contactConfigPath: `${configBase}/contacts`
 }
