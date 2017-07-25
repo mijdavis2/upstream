@@ -4,7 +4,7 @@
       <nav class="topnav">
         <router-link class="brand" to="/"><b>UpStream</b></router-link>
         <router-link to="/new">New</router-link>
-        <router-link to="/current">Current</router-link>
+        <router-link v-if="currentReport" to="/report">Current</router-link>
         <router-link to="/load">Load</router-link>
         <router-link to="/config">Config</router-link>
         <a class="time float-right">{{ dateNow }}</a>
@@ -65,6 +65,11 @@
             console.log(data)
           })
         })
+      }
+    },
+    computed: {
+      currentReport: function () {
+        return this.$store.getters.reportId
       }
     }
   }

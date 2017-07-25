@@ -32,7 +32,8 @@
 
           <h3 id="m4" class="mt-3">Channel Summary</h3><hr>
           <div id="m5" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(siteData.channelSummary)" class="form-group" style="width: 45%;">
+            <dl v-for="item of Object.keys(siteData.channelSummary)"
+                v-if="item !== 'Comments on rating'" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
               <dd v-if="!['Gauge operating', 'Data downloaded'].includes(item)">
                 <input class="form-control" type="text" v-model="siteData.channelSummary[item]">
