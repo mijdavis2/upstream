@@ -18,11 +18,17 @@ export const quickSaveToTmpFile = ({getters}) => {
 }
 
 export const saveAs = ({getters}, location) => {
-  util.saveAs(location, {
-    reportId: getters.reportId,
-    siteData: getters.siteData,
-    flowData: getters.flowData,
-    results: getters.results,
-    site: getters.site
-  })
+  // util.saveAs(location, {
+  //   reportId: getters.reportId,
+  //   siteData: getters.siteData,
+  //   flowData: getters.flowData,
+  //   results: getters.results,
+  //   site: getters.site
+  // })
+  util.saveAsCsv(
+    location,
+    getters.siteData,
+    getters.flowData,
+    getters.results
+  )
 }

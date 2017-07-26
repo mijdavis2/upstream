@@ -255,7 +255,7 @@
         dialog.showSaveDialog({
           defaultPath: `${app.getPath('documents')}`,
           filters: [
-            {name: 'json', extensions: ['json']}
+            {name: 'csv', extensions: ['csv']}
           ]
         }, function (fileName) {
           if (fileName === undefined) return
