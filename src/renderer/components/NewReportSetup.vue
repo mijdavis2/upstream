@@ -34,7 +34,7 @@
             <dd>
               <select class="form-select" v-model="selectedConfig">
                 <option v-for="config in stationConfigs" :value="config" :selected="config.stations === 16">
-                  {{ config.stations }} stations at {{ config.spacing }}
+                  {{ config.stations - 1 }} stations at {{ config.spacing }}
                 </option>
               </select>
             </dd>
@@ -112,7 +112,7 @@
           for (let i of range(settings.min, settings.max)) {
             const option = {
               stations: i,
-              spacing: Math.round(((this.endBank - this.startBank) / i) * 100) / 100
+              spacing: Math.round(((this.endBank - this.startBank) / i) * 10) / 10
             }
             computedConfigs.push(option)
           }

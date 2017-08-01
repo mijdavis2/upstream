@@ -34,11 +34,11 @@ github-release upload \
     --repo ${REPO} \
     --tag ${VERSION} \
     --name "${REPO}-darwin-x64.zip" \
-    --file build/${REPO}-mac-x64.zip
+    --file build/${REPO}-darwin-x64.zip
 
 github-release upload \
     --user ${USER} \
     --repo ${REPO} \
     --tag ${VERSION} \
     --name "${REPO}-win32-x64.zip" \
-    --file build/${REPO}-windows-x64.zip
+    --file build/${REPO}-win32-x64.zip
