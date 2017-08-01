@@ -131,18 +131,16 @@
         background-color inherit
         color #fff
   .topnav
-    background-color: theme-dark-bg
     overflow: hidden
   .topnav a
     float: left
     display: block
-    color: #f2f2f2
+    color: #afafaf
     text-align: center
     padding: 14px 16px
     text-decoration: none
   .topnav a:hover
-    background-color: #ddd
-    color: black
+    color: #f1f1f1
     text-decoration: none
   .main-container
     height 100%
