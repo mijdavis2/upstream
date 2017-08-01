@@ -3,7 +3,7 @@
     <div class="m-3">
       <h2>Email</h2>
       <p class="lead alt-lead mb-1">
-        *Share reports directly from UpStream!
+        *Share reports directly from UpStream! Currently in beta.
       </p>
     </div>
     <div class="card p-3">
