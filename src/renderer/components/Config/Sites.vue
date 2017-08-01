@@ -106,7 +106,7 @@
     },
     computed: {
       computedSites () {
-        const sites = this.$store.getters.sites.sorted()
+        const sites = this.$store.getters.sites
         // Reset newSite when it is added to sites
         if (sites.indexOf(this.newSite) > -1) {
           this.newSite = {name: '', id: ''}

@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
   sites (state) {
-    return state.sites
+    return state.sites.sort(function (a, b) { return (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0) })
   },
   contacts (state) {
     return state.contacts
