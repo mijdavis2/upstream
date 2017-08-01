@@ -8,7 +8,7 @@
 > **CURRENTLY IN BETA**
 >
 >Missing features:
->  - exporting reports as csv files
+>  - unit testing
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -33,7 +33,7 @@ and download the appropriate package
 
 **Run**
 
-1. Run the executable (called `upstream[.something]` depending on OS and click through all the warnings.
+1. Run the executable (called `upstream[.something]` depending on OS.
 
 ## Develop
 
