@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# TODO: use cmd line args for release description and pre-release option
+# TODO: use cmd line args for pre-release option
 
 VERSION=$(cat package.json | jq -r '.version')
 USER=$(cat package.json | jq -r '.author')
@@ -34,11 +34,11 @@ github-release upload \
     --repo ${REPO} \
     --tag ${VERSION} \
     --name "${REPO}-darwin-x64.zip" \
-    --file build/${REPO}-darwin-x64.zip
+    --file build/${REPO}-mac-x64.zip
 
 github-release upload \
     --user ${USER} \
     --repo ${REPO} \
     --tag ${VERSION} \
     --name "${REPO}-win32-x64.zip" \
-    --file build/${REPO}-win32-x64.zip
+    --file build/${REPO}-windows-x64.zip
