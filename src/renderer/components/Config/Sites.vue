@@ -55,7 +55,12 @@
         if (this.sites === undefined) {
           this.sites = []
         }
-        this.$store.commit('SET_SITES', this.computedSites.concat([this.newSite]))
+        this.$store.commit('SET_SITES', this.computedSites.concat([
+          {
+            name: this.newSite.name,
+            id: this.newSite.id.toUpperCase()
+          }
+        ]))
         this.addingSite = false
       },
       removeSite (site) {
