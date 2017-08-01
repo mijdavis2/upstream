@@ -24,7 +24,8 @@ function createWindow () {
     height: 1000,
     useContentSize: true,
     width: 1434,
-    show: false
+    show: false,
+    fullscreen: true
   })
 
   mainWindow.loadURL(winURL)
@@ -55,7 +56,7 @@ app.on('activate', () => {
   }
 })
 
-const { Menu } = require('electron')
+// const { Menu } = require('electron')
 
 const template = [
   {
@@ -142,5 +143,5 @@ if (process.platform === 'darwin') {
   ]
 }
 
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+// const menu = Menu.buildFromTemplate(template)
+// Menu.setApplicationMenu(menu)
