@@ -29,12 +29,12 @@ github-release upload \
     --name "${REPO}-linux-x64.zip" \
     --file build/${REPO}-linux-x64.zip
 
-github-release upload \
-    --user ${USER} \
-    --repo ${REPO} \
-    --tag ${VERSION} \
-    --name "${REPO}-darwin-x64.zip" \
-    --file build/${REPO}-darwin-x64.zip
+#github-release upload \
+#    --user ${USER} \
+#    --repo ${REPO} \
+#    --tag ${VERSION} \
+#    --name "${REPO}-darwin-x64.zip" \
+#    --file build/${REPO}-darwin-x64.zip
 
 github-release upload \
     --user ${USER} \
