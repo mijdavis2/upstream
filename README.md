@@ -33,8 +33,8 @@ and download the appropriate package:
 - **Windows**: UpStream.Win.Setup.[version].exe 
   - double click after download to install - ignore any windows store warnings
 
-- **Linux**: upstream-linux-x64.zip 
-  - simply extract then run `upstream` binary
+- **Linux**: upstream-[version]-x86_64.AppImage 
+  - if necessary, `chomd +x`, then run as any other binary to install
 
 **Run**
 
