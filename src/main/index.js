@@ -25,7 +25,7 @@ function createWindow () {
     useContentSize: true,
     width: 1434,
     show: false,
-    fullscreen: true
+    fullscreen: process.env.NODE_ENV !== 'development'
   })
 
   mainWindow.loadURL(winURL)

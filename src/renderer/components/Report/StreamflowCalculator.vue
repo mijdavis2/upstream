@@ -254,7 +254,7 @@
         this.$store.commit('UPDATE_RESULTS', this.results)
         const vm = this
         dialog.showSaveDialog({
-          defaultPath: `${app.getPath('documents')}`,
+          defaultPath: `${app.getPath('documents')}/${moment().format('MM-YYYY')}_${vm.$store.getters.site.name}.csv`,
           filters: [
             {name: 'csv', extensions: ['csv']}
           ]

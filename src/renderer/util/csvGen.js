@@ -4,7 +4,7 @@ export default class CsvGen {
     this.flowData = flowData
     console.log(this.flowData)
     this.results = results
-    this.resultHeadings = `MEASUREMENT RESULTS,,,,,,,,,,,,
+    this.resultHeadings = `RESULTS,,,,,,,,,,,,
 St,Clock,"Tape, ft",Max Depth,Spins,"Time, Sec",ft/sec,"station, ft","width, ft",q,Qcol,Perecent of flow,Reading Comments`
   }
   getSiteSummary () {
@@ -55,7 +55,7 @@ Cross Section Substrate:,${CROSS_SECTION_SUBSTRATE},,Right bank conditions:,${RI
 Grade Control:,${GRADE_CONTROL},,Left bank conditions,${LEFT_BANK_CONDITIONS}
 Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
 ,,,Data Downloaded:,${DATA_DOWNLOAD}
-"Rated (excellent, good, fair, poor):",${RATED},,Comments on Rating:,${COMMENTS_ON_RATING}
+"Rated:",${RATED},,Comments on Rating:,${COMMENTS_ON_RATING}
 `
   }
   discharge () {
@@ -63,6 +63,9 @@ Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
     return `,,,,,,,,Total Discharge:,,=SUM(K23:K${cell}),,`
   }
   getFtPerSec (st) {
+    if (st === 0 || st === this.flowData.length - 1) {
+      return 0
+    }
     const const1 = this.siteData.siteVisitSummary['Meter type'].const1
     const const2 = this.siteData.siteVisitSummary['Meter type'].const2
     const numerator = `E${st + 23}`
@@ -70,7 +73,7 @@ Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
     return `=${const1}*(${numerator}/${denom})+${const2}`
   }
   getStFt (st) {
-    return `=C${st + 23} - C3`
+    return `=C${st + 23} - C23`
   }
   getWidthFt (st) {
     if (st === 0) {
@@ -79,7 +82,10 @@ Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
     if (st === this.flowData.length - 1) {
       return `=(H${st + 23} - H${st + 22})/2`
     }
-    return `=(H${st + 23} - H${st + 22})/2 + (H${st + 24} * H${st + 23})/2`
+    if (st === 0) {
+      return `=(H${st + 24} - H${st + 23})/2`
+    }
+    return `=(H${st + 23} - H${st + 22})/2 + (H${st + 24} - H${st + 23})/2`
   }
   getQ (st) {
     return `=G${st + 23}*D${st + 23}`
@@ -88,7 +94,7 @@ Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
     return `=J${st + 23}*I${st + 23}`
   }
   getPercentOfFlow (st) {
-    return `=K${st + 23}/$K$${this.flowData.length + 22}`
+    return `=K${st + 23}/$K$${this.flowData.length + 23}`
   }
   genRow (st) {
     return `${st},${this.flowData[st].clock},${this.flowData[st].tapeFt},${this.flowData[st].maxDepth},${this.flowData[st].spins},${this.flowData[st].timeSec},${this.getFtPerSec(st)},${this.getStFt(st)},${this.getWidthFt(st)},${this.getQ(st)},${this.getQcol(st)},${this.getPercentOfFlow(st)},${this.flowData[st].readingComments}`
