@@ -27,9 +27,14 @@
 
 **Install**
 
-1. Go to the [releases page](https://github.com/mijdavis2/upstream/releases)
-and download the appropriate package
-1. Extract the zip
+Go to the [releases page](https://github.com/mijdavis2/upstream/releases)
+and download the appropriate package:
+    
+- **Windows**: UpStream.Win.Setup.[version].exe 
+  - double click after download to install - ignore any windows store warnings
+
+- **Linux**: upstream-linux-x64.zip 
+  - simply extract then run `upstream` binary
 
 **Run**
 
@@ -50,20 +55,20 @@ and download the appropriate package
 yarn install
 
 # serve with hot reload at localhost:9080
-yarn run dev
+yarn dev
 
 # run unit & end-to-end tests
 yarn test
 
 # lint all JS/Vue component files in `src/`
-yarn run lint
+yarn lint
 
 ```
 
 ### Build
 
 ```
-yarn run build
+yarn build
 ```
 
 ## License

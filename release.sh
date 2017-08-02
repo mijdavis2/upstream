@@ -5,15 +5,13 @@
 VERSION=$(cat package.json | jq -r '.version')
 USER=$(cat package.json | jq -r '.author')
 REPO=$(cat package.json | jq -r '.name')
+PRODUCT_NAME=$(cat package.json | jq -r '.build.productName')
 
 # Release packaged application
-yarn run build && \
-
-zip -r build/upstream-linux-x64.zip build/upstream-linux-x64/
-zip -r build/upstream-darwin-x64.zip build/upstream-darwin-x64/
-zip -r build/upstream-win32-x64.zip build/upstream-win32-x64/
+yarn run build
 
 # Assumes https://github.com/aktau/github-release is installed on PATH
+echo "Pushing release ${VERSION}"
 github-release release \
     --user ${USER} \
     --repo ${REPO} \
@@ -22,23 +20,20 @@ github-release release \
     --description "$1" \
     --pre-release
 
+echo "Uploading linux AppImage..."
 github-release upload \
     --user ${USER} \
     --repo ${REPO} \
     --tag ${VERSION} \
-    --name "${REPO}-linux-x64.zip" \
-    --file build/${REPO}-linux-x64.zip
+    --name "${REPO}-${VERSION}-x86_64.AppImage" \
+    --file build/${REPO}-${VERSION}-x86_64.AppImage
+echo "Linux AppImage upload complete!"
 
-#github-release upload \
-#    --user ${USER} \
-#    --repo ${REPO} \
-#    --tag ${VERSION} \
-#    --name "${REPO}-darwin-x64.zip" \
-#    --file build/${REPO}-darwin-x64.zip
-
+echo "Uploading windows installer..."
 github-release upload \
     --user ${USER} \
     --repo ${REPO} \
     --tag ${VERSION} \
-    --name "${REPO}-win32-x64.zip" \
-    --file build/${REPO}-win32-x64.zip
+    --name "${PRODUCT_NAME} Win Setup ${VERSION}.exe" \
+    --file build/${PRODUCT_NAME}\ Setup\ ${VERSION}.exe
+echo "Windows installer upload complete!"
