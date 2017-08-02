@@ -57,8 +57,8 @@
         }
         this.$store.commit('SET_SITES', this.computedSites.concat([
           {
-            name: this.newSite.name,
-            id: this.newSite.id.toUpperCase()
+            name: this.newSite.name[0].toUpperCase() + this.newSite.id.slice(1),
+            id: this.newSite.id[0].toUpperCase() + this.newSite.id.slice(1)
           }
         ]))
         this.addingSite = false

@@ -1,0 +1,354 @@
+{
+  "reportId": "a5-1501645367224",
+  "siteData": {
+    "siteName": "alpha",
+    "siteId": "a5",
+    "siteVisitSummary": {
+      "Date": "08/01/2017",
+      "Field crew taking measurements": "gab",
+      "Start time": "08:42 pm",
+      "Field crew taking notes": null,
+      "Measurement #": null,
+      "Staff Plate Reading": null,
+      "Atmospheric Cond": null,
+      "Spin test at start": false,
+      "Meter number": null,
+      "Spin test at end": false,
+      "Meter type": {
+        "name": "Pygmy Meter",
+        "const1": 0.9604,
+        "const2": 0.0312
+      }
+    },
+    "comments": {
+      "Site comments": null,
+      "Site repairs needed": null
+    },
+    "channelSummary": {
+      "Cross section location": null,
+      "Start edge": null,
+      "Cross section substrate": null,
+      "Right bank conditions": null,
+      "Grade control": null,
+      "Left bank conditions": null,
+      "Flow consistency": null,
+      "Gauge operating": null,
+      "Rated": null,
+      "Data downloaded": null
+    }
+  },
+  "flowData": [
+    {
+      "station": 0,
+      "clock": "08:42 pm",
+      "tapeFt": 5.9,
+      "maxDepth": 0,
+      "spins": 0,
+      "timeSec": 50,
+      "readingComments": "Start bank"
+    },
+    {
+      "station": 1,
+      "clock": "",
+      "tapeFt": 6.8,
+      "maxDepth": ".16",
+      "spins": "0",
+      "timeSec": "50",
+      "readingComments": ""
+    },
+    {
+      "station": 2,
+      "clock": "",
+      "tapeFt": 7.7,
+      "maxDepth": ".22",
+      "spins": "0",
+      "timeSec": "50",
+      "readingComments": ""
+    },
+    {
+      "station": 3,
+      "clock": "",
+      "tapeFt": 8.6,
+      "maxDepth": ".20",
+      "spins": "14",
+      "timeSec": "51.80",
+      "readingComments": ""
+    },
+    {
+      "station": 4,
+      "clock": "",
+      "tapeFt": 9.5,
+      "maxDepth": ".23",
+      "spins": "6",
+      "timeSec": "54.90",
+      "readingComments": ""
+    },
+    {
+      "station": 5,
+      "clock": "",
+      "tapeFt": 10.4,
+      "maxDepth": ".20",
+      "spins": "7",
+      "timeSec": "54",
+      "readingComments": ""
+    },
+    {
+      "station": 6,
+      "clock": "",
+      "tapeFt": 11.3,
+      "maxDepth": ".18",
+      "spins": "12",
+      "timeSec": "53.5",
+      "readingComments": ""
+    },
+    {
+      "station": 7,
+      "clock": "",
+      "tapeFt": 12.2,
+      "maxDepth": ".17",
+      "spins": "22",
+      "timeSec": "51.5",
+      "readingComments": ""
+    },
+    {
+      "station": 8,
+      "clock": "",
+      "tapeFt": 13.1,
+      "maxDepth": ".3",
+      "spins": "16",
+      "timeSec": "51.9",
+      "readingComments": ""
+    },
+    {
+      "station": 9,
+      "clock": "",
+      "tapeFt": 14,
+      "maxDepth": ".3",
+      "spins": "12",
+      "timeSec": "53.6",
+      "readingComments": ""
+    },
+    {
+      "station": 10,
+      "clock": "",
+      "tapeFt": 14.9,
+      "maxDepth": ".3",
+      "spins": "8",
+      "timeSec": "52",
+      "readingComments": ""
+    },
+    {
+      "station": 11,
+      "clock": "",
+      "tapeFt": 15.8,
+      "maxDepth": ".32",
+      "spins": "16",
+      "timeSec": "50.2",
+      "readingComments": ""
+    },
+    {
+      "station": 12,
+      "clock": "",
+      "tapeFt": 16.7,
+      "maxDepth": ".22",
+      "spins": "3",
+      "timeSec": "52.5",
+      "readingComments": ""
+    },
+    {
+      "station": 13,
+      "clock": "",
+      "tapeFt": 17.6,
+      "maxDepth": ".25",
+      "spins": "0",
+      "timeSec": "50",
+      "readingComments": ""
+    },
+    {
+      "station": 14,
+      "clock": "",
+      "tapeFt": 18.5,
+      "maxDepth": ".25",
+      "spins": "0",
+      "timeSec": "50",
+      "readingComments": ""
+    },
+    {
+      "station": 15,
+      "clock": "",
+      "tapeFt": 19.4,
+      "maxDepth": ".11",
+      "spins": "0",
+      "timeSec": "50",
+      "readingComments": ""
+    },
+    {
+      "station": 16,
+      "clock": "",
+      "tapeFt": 20.2,
+      "maxDepth": 0,
+      "spins": 0,
+      "timeSec": 50,
+      "readingComments": "End bank"
+    }
+  ],
+  "results": [
+    {
+      "station": 0,
+      "ftPerSec": 0,
+      "stationFt": 0,
+      "widthFt": 0.45,
+      "q": 0,
+      "qCol": 0,
+      "percentFlow": 0
+    },
+    {
+      "station": 1,
+      "ftPerSec": 0.0312,
+      "stationFt": 0.9,
+      "widthFt": 0.9,
+      "q": 0.004992,
+      "qCol": 0.0044928,
+      "percentFlow": 0.8008259929982482
+    },
+    {
+      "station": 2,
+      "ftPerSec": 0.0312,
+      "stationFt": 1.8,
+      "widthFt": 0.9,
+      "q": 0.0068639999999999994,
+      "qCol": 0.006177599999999999,
+      "percentFlow": 1.101135740372591
+    },
+    {
+      "station": 3,
+      "ftPerSec": 0.2907675675675676,
+      "stationFt": 2.7,
+      "widthFt": 0.9,
+      "q": 0.05815351351351353,
+      "qCol": 0.05233816216216217,
+      "percentFlow": 9.329095594109878
+    },
+    {
+      "station": 4,
+      "ftPerSec": 0.13616174863387978,
+      "stationFt": 3.6,
+      "widthFt": 0.9,
+      "q": 0.03131720218579235,
+      "qCol": 0.028185481967213113,
+      "percentFlow": 5.02396425047357
+    },
+    {
+      "station": 5,
+      "ftPerSec": 0.1556962962962963,
+      "stationFt": 4.5,
+      "widthFt": 0.9,
+      "q": 0.031139259259259262,
+      "qCol": 0.028025333333333336,
+      "percentFlow": 4.995418312805727
+    },
+    {
+      "station": 6,
+      "ftPerSec": 0.24661682242990654,
+      "stationFt": 5.4,
+      "widthFt": 0.9,
+      "q": 0.04439102803738318,
+      "qCol": 0.03995192523364486,
+      "percentFlow": 7.121291888671967
+    },
+    {
+      "station": 7,
+      "ftPerSec": 0.44146796116504855,
+      "stationFt": 6.3,
+      "widthFt": 0.9,
+      "q": 0.07504955339805826,
+      "qCol": 0.06754459805825243,
+      "percentFlow": 12.039589968765034
+    },
+    {
+      "station": 8,
+      "ftPerSec": 0.3272770712909442,
+      "stationFt": 7.2,
+      "widthFt": 0.9,
+      "q": 0.09818312138728326,
+      "qCol": 0.08836480924855493,
+      "percentFlow": 15.750720288589473
+    },
+    {
+      "station": 9,
+      "ftPerSec": 0.24621492537313436,
+      "stationFt": 8.1,
+      "widthFt": 0.9,
+      "q": 0.0738644776119403,
+      "qCol": 0.06647802985074627,
+      "percentFlow": 11.849477890801074
+    },
+    {
+      "station": 10,
+      "ftPerSec": 0.17895384615384619,
+      "stationFt": 9,
+      "widthFt": 0.9,
+      "q": 0.053686153846153856,
+      "qCol": 0.048317538461538474,
+      "percentFlow": 8.612433386238559
+    },
+    {
+      "station": 11,
+      "ftPerSec": 0.3373035856573705,
+      "stationFt": 9.9,
+      "widthFt": 0.9,
+      "q": 0.10793714741035856,
+      "qCol": 0.09714343266932271,
+      "percentFlow": 17.315479418329062
+    },
+    {
+      "station": 12,
+      "ftPerSec": 0.08607999999999999,
+      "stationFt": 10.8,
+      "widthFt": 0.9,
+      "q": 0.0189376,
+      "qCol": 0.01704384,
+      "percentFlow": 3.038005273438226
+    },
+    {
+      "station": 13,
+      "ftPerSec": 0.0312,
+      "stationFt": 11.7,
+      "widthFt": 0.9,
+      "q": 0.0078,
+      "qCol": 0.00702,
+      "percentFlow": 1.2512906140597628
+    },
+    {
+      "station": 14,
+      "ftPerSec": 0.0312,
+      "stationFt": 12.6,
+      "widthFt": 0.9,
+      "q": 0.0078,
+      "qCol": 0.00702,
+      "percentFlow": 1.2512906140597628
+    },
+    {
+      "station": 15,
+      "ftPerSec": 0.0312,
+      "stationFt": 13.5,
+      "widthFt": 0.85,
+      "q": 0.0034319999999999997,
+      "qCol": 0.0029171999999999996,
+      "percentFlow": 0.5199807662870569
+    },
+    {
+      "station": 16,
+      "ftPerSec": 0,
+      "stationFt": 14.3,
+      "widthFt": 0.4,
+      "q": 0,
+      "qCol": 0,
+      "percentFlow": 0
+    }
+  ],
+  "site": {
+    "name": "alpha",
+    "id": "a5"
+  }
+}

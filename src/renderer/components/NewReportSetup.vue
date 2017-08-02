@@ -154,7 +154,7 @@
           'readingComments': 'End bank'
         })
         this.$store.commit('UPDATE_FLOW_DATA', flowData)
-        this.$store.commit('UPDATE_REPORT_ID', `${this.site.id}-${moment().valueOf()}`)
+        this.$store.commit('UPDATE_REPORT_ID', `${moment().format('MM-YYYY')}_${this.site.name}_${moment().format('DD_ss')}`)
         this.$router.push('/report')
       }
     }
