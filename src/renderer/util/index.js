@@ -2,7 +2,7 @@ import CsvGen from './csvGen'
 const { app } = require('electron').remote
 const fs = require('fs')
 
-const configBasePath = `${app.getPath('userData')}/upstream`
+const configBasePath = `${app.getPath('userData')}`
 fs.existsSync(configBasePath) || fs.mkdirSync(configBasePath)
 
 export default {
