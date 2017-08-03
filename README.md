@@ -4,41 +4,31 @@
   UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>.
 </p>
 
-
-> **CURRENTLY IN BETA**
->
->Missing features:
->  - unit testing
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Install and Run](#install-and-run)
+- [Install](#install)
 - [Develop](#develop)
   - [Requirements](#requirements)
-- [Build](#build)
+  - [Build](#build)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-## Install and Run
+## Install
 
 **Install**
 
 Go to the [releases page](https://github.com/mijdavis2/upstream/releases)
 and download the appropriate package:
     
-- **Windows**: UpStream.Win.Setup.[version].exe 
+- **Windows**: `UpStream.Win.Setup.[version].exe`
   - double click after download to install - ignore any windows store warnings
 
-- **Linux**: upstream-[version]-x86_64.AppImage 
+- **Linux**: `upstream-[version]-x86_64.AppImage` 
   - if necessary, `chomd +x`, then run as any other binary to install
-
-**Run**
-
-1. Run the executable (called `upstream[.something]` depending on OS.
 
 ## Develop
 
