@@ -12,8 +12,12 @@
     <nav class="menu m-1">
       <div class="p-3 menu-item flex flex-between" v-if="addingSite">
         <span>
-          Name: <input type="text" v-model="newSite.name">
-          ID: <input type="text" v-model="newSite.id">
+          <span class="flex flex-between">
+            <span>ID:</span> <span><input type="text" v-model="newSite.id"></span>
+          </span>
+          <span class="flex flex-between">
+            <span>Name:</span> <span><input type="text" v-model="newSite.name"></span>
+          </span>
         </span>
         <span><button class="btn btn-outline" @click="saveSites">Save</button></span>
       </div>
@@ -57,7 +61,7 @@
         }
         this.$store.commit('SET_SITES', this.computedSites.concat([
           {
-            name: this.newSite.name[0].toUpperCase() + this.newSite.id.slice(1),
+            name: this.newSite.name[0].toUpperCase() + this.newSite.name.slice(1),
             id: this.newSite.id[0].toUpperCase() + this.newSite.id.slice(1)
           }
         ]))

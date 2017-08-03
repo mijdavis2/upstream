@@ -10,7 +10,7 @@
             <dt><label>Site</label></dt>
             <dd>
               <select class="form-select" v-model="site">
-                <option v-for="site in sites" :value="site">{{ site.name }} - {{ site.id }}</option>
+                <option v-for="site in sites" :value="site">{{ site.id }} - {{ site.name }}</option>
               </select>
               <span class="input-group-button">
                 <router-link class="btn" to="/config/sites?new=true">+ New Site</router-link>
