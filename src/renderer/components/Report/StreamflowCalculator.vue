@@ -139,7 +139,7 @@
         this.items[station].clock = moment().format('hh:mm a')
       },
       getFtPerSec (spins, timeSec) {
-        if (!spins || !timeSec) {
+        if (!spins || spins <= 0) {
           return 0
         }
         return this.meterVars.const1 * (spins / timeSec) + this.meterVars.const2
