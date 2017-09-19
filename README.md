@@ -30,6 +30,19 @@ and download the appropriate package:
 - **Linux**: `upstream-[version]-x86_64.AppImage` 
   - if necessary, `chomd +x`, then run as any other binary to install
 
+## CSV generation
+
+When importing csv files created by **Upstream** use the following settings:
+
+- Character set: `Unicode (UTF-8)`
+- From row: `1`
+- Separator Options:
+    - `Separated by`
+        - `Tab`
+        - `Comma`
+        - `Semicolon`
+- Text Delimiter: `"`
+
 ## Develop
 
 > This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
