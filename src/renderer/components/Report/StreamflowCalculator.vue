@@ -12,16 +12,16 @@
           <tr v-for="item of items">
             <th scope="row">{{ item.station }}</th>
             <td>
-              <input class="stream-input" type="text" :id="`Clock-${item.station}`" :value="item.clock" @input="updateClock(item.station)">
+              <input class="stream-input" :id="`Clock-${item.station}`" :value="item.clock" @input="updateClock(item.station)">
               <button class="btn btn-small" v-on:click="autofillClock(item.station)">Auto</button></td>
             <td>
-              <input class="stream-input" type="number" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
+              <input class="stream-input" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
             <td>
-              <input class="stream-input" type="number" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></td>
+              <vue-numeric v-bind:precision="2" class="stream-input" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></vue-numeric></td>
             <td>
-              <input class="stream-input" type="number" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></td>
+              <vue-numeric v-bind:precision="0" class="stream-input" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></vue-numeric></td>
             <td>
-              <input class="stream-input" type="number" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></td>
+              <vue-numeric v-bind:precision="1" class="stream-input" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></vue-numeric></td>
             <td>
               <textarea :id="`ReadingComments-${item.station}`" :value="item.readingComments" @input="updateReadingComments(item.station)"></textarea></td>
           </tr>
