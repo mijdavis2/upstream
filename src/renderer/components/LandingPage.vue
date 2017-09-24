@@ -40,26 +40,50 @@
     <hr>
     <main class="flex flex-between">
       <div class="flex-sm p-2">
-        <div class="doc">
-          <h2 class="alt-h2 mb-1"><b>Report issues or request features</b></h2>
+        <div class="doc csv-instructions">
+          <h2 class="alt-h2 mb-1"><b>Importing Generated CSV</b></h2>
           <p>
-            UpStream is open-sourced on GitHub.
+            When importing csv files created by Upstream use the following settings:
           </p>
-          <p>
-            Bug-fix requests and feature requests will be handled as quickly as possible.
-          </p>
-          <p>
-            To better troubleshoot issues, include the system information in bug reports.
-          </p>
-          <div>
-            <button class="btn btn-outline" @click="open('https://github.com/mijdavis2/upstream/issues')">Go to UpStream Issues</button>
-          </div>
+          <ul>
+            <li>Character set: Unicode (UTF-8)</li>
+            <li>From row: 1</li>
+            <li>Separator Options:
+              <ul>
+                <li>Separated by
+                  <ul>
+                    <li>Tab</li>
+                    <li>Comma</li>
+                    <li>Semicolon</li>
+                  </ul>
+                </li>
+                <li>Text Delimiter: "</li>
+              </ul>
+            </li>
+          </ul>
         </div>
         <br>
       </div>
 
       <div class="flex-sm ml-3 p-2">
-        <system-information></system-information>
+        <div class="flex flex-between">
+          <div class="doc">
+            <h2 class="alt-h2 mb-1"><b>Report issues or request features</b></h2>
+            <p>
+              UpStream is open-sourced on GitHub.
+            </p>
+            <p>
+              Bug-fix requests and feature requests will be handled as quickly as possible.
+            </p>
+            <p>
+              To better troubleshoot issues, include the system information in bug reports.
+            </p>
+            <div>
+              <button class="btn btn-outline" @click="open('https://github.com/mijdavis2/upstream/issues')">Go to UpStream Issues</button>
+            </div>
+          </div>
+          <system-information></system-information>
+        </div>
       </div>
     </main>
     <br>
@@ -113,4 +137,15 @@
     color grey
     a
       text-decoration none
+
+  .csv-instructions
+    ul
+      margin-left: 10px
+      ul
+        margin-left: 15px
+        ul
+          margin-left: 20px
+    li
+      text-align: left !important
+      border-bottom: 0;
 </style>
