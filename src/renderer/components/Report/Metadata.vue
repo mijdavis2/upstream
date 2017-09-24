@@ -10,13 +10,19 @@
             <dl v-for="item of Object.keys(siteData.siteVisitSummary)"
                 v-if="item !== 'Meter type'" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
-              <dd v-if="!['Spin test at start', 'Spin test at end'].includes(item)">
-                <input class="form-control" type="text" v-model="siteData.siteVisitSummary[item]">
-              </dd>
-              <dd v-else>
+              <dd v-if="['Spin test at start', 'Spin test at end'].includes(item)">
                 <input type="checkbox" :id="`checkbox-${item}`"
                        class="form-checkbox mr-3" v-model="siteData.siteVisitSummary[item]">
                 <label class="lead alt-text-small" :for="`checkbox-${item}`">(check for <em>YES</em>)</label>
+              </dd>
+              <dd v-else-if="['Staff Plate Reading'].includes(item)">
+                <div class="input-btn-group">
+                  <input class="form-control" type="text" v-model="siteData.siteVisitSummary[item]">
+                  <a id="m2" class="btn btn-small mt-1" v-on:click="autofillStaffPlateTime">Autofill Time</a>
+                </div>
+              </dd>
+              <dd v-else>
+                <input class="form-control" type="text" v-model="siteData.siteVisitSummary[item]">
               </dd>
             </dl>
             <dl class="form-group">
@@ -88,7 +94,7 @@
           'Start time': null,
           'Field crew taking notes': null,
           'Measurement #': null,
-          'Staff Plate Reading': null,
+          'Staff Plate Reading': '',
           'Atmospheric Cond': null,
           'Spin test at start': false,
           'Meter number': null,
@@ -140,6 +146,10 @@
       autofillDate: function () {
         this.siteData.siteVisitSummary['Date'] = moment().format('MM/DD/YYYY')
         this.siteData.siteVisitSummary['Start time'] = moment().format('hh:mm a')
+      },
+      autofillStaffPlateTime: function () {
+        const currentReading = this.siteData.siteVisitSummary['Staff Plate Reading']
+        this.siteData.siteVisitSummary['Staff Plate Reading'] = `${currentReading} @ ${moment().format('hh:mm a')}`
       },
       quickSave: debounce(
         function () {
