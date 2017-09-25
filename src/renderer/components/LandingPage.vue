@@ -1,9 +1,5 @@
 <template>
   <div class="landing-wrapper p-3 intro-font-size">
-    <!--<div class="flex flex-center">-->
-      <!--<img id="logo" src=../assets/sea.svg" alt="electron-vue">-->
-      <!--<div><h1 class="alt-h1 logo-name">UpStream</h1></div>-->
-    <!--</div>-->
     <main class="flex flex-between">
       <div class="flex flex-column flex-sm p-2">
         <h2 class="alt-h2 mb-1">
@@ -17,20 +13,16 @@
       </div>
 
       <div class="flex-sm p-2">
-        <div class="doc">
-          <h2 class="alt-h2 mb-1"><b>Getting Started</b></h2>
-          <p>
-            UpStream will generate a table for you to input stream flow data based on a series of options.
-          </p>
-          <p>
-            You will be able to add update site data while updating stream flow data.
-            UpStream saves on every keystroke so
-            you can recover partially completed reports if the app crashes
-            or your device loses battery.
-          </p>
-          <p>
-            Click <b><i>Start new report</i></b> below to begin!
-          </p>
+        <div class="doc csv-instructions">
+          <h2 class="alt-h2 mb-1"><b>Features</b></h2>
+          <ul class="ml-3">
+            <li>Generate steam flow forms from start bank, end bank, and station count.</li>
+            <li>Calc discharge and generate csv files.</li>
+            <li>Auto-fill dates and times.</li>
+            <li>Temp save on every keystroke.</li>
+            <li>Store sites and site IDs (via 'Config').</li>
+            <li>Email csv report from app (beta).</li>
+          </ul>
           <br>
           <router-link :to="'/new'"><button class="btn btn-primary btn-large btn-block">Start new report</button></router-link>
         </div>
@@ -45,7 +37,7 @@
           <p>
             When importing csv files created by Upstream use the following settings:
           </p>
-          <ul>
+          <ul class="ml-3">
             <li>Character set: Unicode (UTF-8)</li>
             <li>From row: 1</li>
             <li>Separator Options:
@@ -79,7 +71,7 @@
               To better troubleshoot issues, include the system information in bug reports.
             </p>
             <div>
-              <button class="btn btn-outline" @click="open('https://github.com/mijdavis2/upstream/issues')">Go to UpStream Issues</button>
+              <a href="/" @click="open('https://github.com/mijdavis2/upstream/issues')"><b>Go to UpStream Issues</b></a>
             </div>
           </div>
           <system-information></system-information>
@@ -113,7 +105,7 @@
       radial-gradient(
         ellipse at top left,
         rgba(255, 255, 255, 1) 40%,
-        rgba(86, 142, 229, 0.9) 100%
+        rgba(86, 142, 229, 0.2) 100%
       )
 
   .intro-font-size

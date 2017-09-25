@@ -10,3 +10,10 @@
     </div>
   </div>
 </template>
+
+<style scoped lang="stylus">
+  .router-link-exact-active, .router-link-active
+    font-weight 600 !important
+    border-left 2px solid blue !important
+    padding-left 10px
+</style>

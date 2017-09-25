@@ -1,6 +1,7 @@
 <template>
   <div class="featurette">
-    <h2>Load Report</h2>
+    <div class="ml-3 mr-3">
+    <h1 class="alt-h1">Load Report</h1>
     <div class="card p-3">
       <p>
         Load a previously saved report or recover a report saved to a temp file.
@@ -11,6 +12,7 @@
       </p>
       <button class="btn btn-outline" @click="loadTmp">Recover report</button>
       <button class="btn btn-outline" @click="loadSave">Load saved report</button>
+    </div>
     </div>
 
   </div>

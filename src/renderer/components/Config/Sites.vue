@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-between m-3">
       <div>
-        <h2>Sites</h2>
+        <h2 class="alt-h2">Sites</h2>
       </div>
       <div>
         <button class="btn btn-outline" @click="loadFromFile">Load from file</button>
