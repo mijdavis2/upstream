@@ -1,0 +1,25 @@
+version: 1.5.3-{build}
+
+platform:
+  - x64
+
+cache:
+  - node_modules
+  - app\node_modules
+  - '%APPDATA%\npm-cache'
+  - '%USERPROFILE%\.electron'
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - ps: Install-Product node 6 x64
+  - git reset --hard HEAD
+  - npm install yarn -g
+  - yarn global add electron-builder@next # force install next version to test electron-builder
+  - yarn install
+
+build_script:
+  - yarn build
+
+test: off
