@@ -4,10 +4,11 @@ UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"
 
 **Features**:
 - Generate comprehensive stream flow csv reports through a feature rich cross-platform native app.
-- Auto generate data input forms from start bank, end bank, and desired number of stations (calculated from start & end bank inputs).
+- Auto generate data input forms from start bank, end bank, and desired number of stations.
 - Auto-fill dates and times.
+- Calculate discharge on the fly through the app.
 - Store site names and IDs in a pick-list.
-- Generates fully featured CSV files with complete excel formatted equasions.
+- Pick from multiple flow meters which generate fully formatted equasions in the csv/excel export.
 - Work easy knowing that a temp file is saved on every keystroke - if your device battery dies or the app crashes, you'll never lose data.
 - Email csv reports directly from the app (in beta).
 
