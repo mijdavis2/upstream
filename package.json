@@ -51,7 +51,7 @@
     },
     "win": {
       "icon": "build/icons/icon.ico",
-      "target": ["squirrel", "appx"]
+      "target": "appx"
     },
     "linux": {
       "icon": "build/icons"
