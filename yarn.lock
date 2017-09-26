@@ -45,13 +45,6 @@ accessibility-developer-tools@^2.11.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/accessibility-developer-tools/-/accessibility-developer-tools-2.12.0.tgz#3da0cce9d6ec6373964b84f35db7cfc3df7ab514"
 
-accounting-js@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/accounting-js/-/accounting-js-1.1.1.tgz#7fe4b3f70c01ebe0b85c02c5f107f1393b880c9e"
-  dependencies:
-    is-string "^1.0.4"
-    object-assign "^4.0.1"
-
 acorn-dynamic-import@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz#c752bd210bef679501b6c6cb7fc84f8f47158cc4"
@@ -4205,10 +4198,6 @@ is-stream@^1.0.0, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
-is-string@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/is-string/-/is-string-1.0.4.tgz#cc3a9b69857d621e963725a24caeec873b826e64"
-
 is-svg@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-svg/-/is-svg-2.1.0.tgz#cf61090da0d9efbcab8722deba6f032208dbb0e9"
@@ -7713,12 +7702,6 @@ vue-loader@^12.2.1:
     vue-hot-reload-api "^2.1.0"
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.2.2"
-
-vue-numeric@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/vue-numeric/-/vue-numeric-2.1.2.tgz#a96690e66b94a88665766ea2c1033852791e6042"
-  dependencies:
-    accounting-js "^1.1.1"
 
 vue-router@^2.5.3:
   version "2.7.0"
