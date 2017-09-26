@@ -17,5 +17,21 @@ export default {
     const csv = new CsvGen(siteData, flowData, results)
     const report = csv.genReport()
     fs.writeFileSync(filename, report)
+  },
+  processFromMiddleOut: function (array) {
+    const newArray = []
+    let i = Math.ceil(array.length / 2)
+    let j = i + 1
+
+    while (i >= 0) {
+      newArray.push(array[j++])
+      if (i < array.length) newArray.push(array[i--])
+    }
+    return newArray
+  },
+  range: function* (begin, end, interval = 1) {
+    for (let i = begin; i < end; i += interval) {
+      yield i
+    }
   }
 }

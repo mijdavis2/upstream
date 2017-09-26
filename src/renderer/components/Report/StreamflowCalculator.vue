@@ -17,11 +17,11 @@
             <td>
               <input class="stream-input" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
             <td>
-              <vue-numeric v-bind:precision="2" class="stream-input" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></vue-numeric></td>
+              <input class="stream-input" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></td>
             <td>
-              <vue-numeric v-bind:precision="0" class="stream-input" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></vue-numeric></td>
+              <input class="stream-input" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></td>
             <td>
-              <vue-numeric v-bind:precision="1" class="stream-input" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></vue-numeric></td>
+              <input class="stream-input" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></td>
             <td>
               <textarea :id="`ReadingComments-${item.station}`" :value="item.readingComments" @input="updateReadingComments(item.station)"></textarea></td>
           </tr>
@@ -112,22 +112,31 @@
         })
       },
       updateMaxDepth (station) {
-        this.$store.commit('updateMaxDepth', {
-          station: station,
-          val: document.getElementById(`MaxDepth-${station}`).value
-        })
+        let val = document.getElementById(`MaxDepth-${station}`).value
+        if (!isNaN(val) || val === '') {
+          this.$store.commit('updateMaxDepth', {
+            station: station,
+            val: val * 1
+          })
+        }
       },
       updateSpins (station) {
-        this.$store.commit('updateSpins', {
-          station: station,
-          val: document.getElementById(`Spins-${station}`).value
-        })
+        let val = document.getElementById(`Spins-${station}`).value
+        if (!isNaN(val) || val === '') {
+          this.$store.commit('updateSpins', {
+            station: station,
+            val: val * 1
+          })
+        }
       },
       updateTimeSec (station) {
-        this.$store.commit('updateTimeSec', {
-          station: station,
-          val: document.getElementById(`TimeSec-${station}`).value
-        })
+        let val = document.getElementById(`TimeSec-${station}`).value
+        if (!isNaN(val) || val === '') {
+          this.$store.commit('updateTimeSec', {
+            station: station,
+            val: val * 1
+          })
+        }
       },
       updateReadingComments (station) {
         this.$store.commit('updateReadingComments', {

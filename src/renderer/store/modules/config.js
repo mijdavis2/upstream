@@ -4,7 +4,7 @@ const fs = require('fs')
 const state = {
   sites: [],
   contacts: [],
-  setupSettings: { min: 4, max: 25 }
+  setupSettings: { min: 2, max: 27 }
 }
 
 const getters = {
