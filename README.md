@@ -1,8 +1,15 @@
 # UpStream
 
-<p>
-  UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>.
-</p>
+UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>, a national non-profit organization whose mission is to "conserve, protect and restore North America's coldwater fisheries and their watersheds".
+
+**Features**:
+- Generate comprehensive stream flow csv reports through a feature rich cross-platform native app.
+- Auto generate data input forms from start bank, end bank, and desired number of stations (calculated from start & end bank inputs).
+- Auto-fill dates and times.
+- Store site names and IDs in a pick-list.
+- Generates fully featured CSV files with complete excel formatted equasions.
+- Work easy knowing that a temp file is saved on every keystroke - if your device battery dies or the app crashes, you'll never lose data.
+- Email csv reports directly from the app (in beta).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -18,8 +25,6 @@
 
 
 ## Install
-
-**Install**
 
 Go to the [releases page](https://github.com/mijdavis2/upstream/releases)
 and download the appropriate package:
@@ -46,6 +51,8 @@ When importing csv files created by **Upstream** use the following settings:
 ## Develop
 
 > This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+
+This project utilizes vuex for state storage and GitHub's [primer-css framework](primercss.io) as a styling base.
 
 
 ### Requirements
