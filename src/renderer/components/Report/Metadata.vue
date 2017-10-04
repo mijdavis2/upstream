@@ -89,15 +89,15 @@
         siteName: '',
         siteId: '',
         siteVisitSummary: {
-          'Date': null,
-          'Field crew taking measurements': null,
-          'Start time': null,
-          'Field crew taking notes': null,
-          'Measurement #': null,
+          'Date': '',
+          'Field crew taking measurements': '',
+          'Start time': '',
+          'Field crew taking notes': '',
+          'Measurement #': '',
           'Staff Plate Reading': '',
-          'Atmospheric Cond': null,
+          'Atmospheric Cond': '',
           'Spin test at start': false,
-          'Meter number': null,
+          'Meter number': '',
           'Spin test at end': false,
           'Meter type': {
             name: 'Pygmy Meter',
@@ -105,18 +105,18 @@
             const2: 0.0312
           }
         },
-        comments: { 'Site comments': null, 'Site repairs needed': null },
+        comments: { 'Site comments': '', 'Site repairs needed': '' },
         channelSummary: {
-          'Cross section location': null,
-          'Start edge': null,
-          'Cross section substrate': null,
-          'Right bank conditions': null,
-          'Grade control': null,
-          'Left bank conditions': null,
-          'Flow consistency': null,
-          'Gauge operating': null,
-          'Rated': null,
-          'Data downloaded': null
+          'Cross section location': '',
+          'Start edge': '',
+          'Cross section substrate': '',
+          'Right bank conditions': '',
+          'Grade control': '',
+          'Left bank conditions': '',
+          'Flow consistency': '',
+          'Gauge operating': '',
+          'Rated': '',
+          'Data downloaded': ''
         }
       },
       meterTypes: [

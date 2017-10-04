@@ -171,9 +171,9 @@
             'station': flowData.length,
             'clock': '',
             'tapeFt': this.selectedConfig.tapeFt[i + 1],
-            'maxDepth': null,
-            'spins': null,
-            'timeSec': null,
+            'maxDepth': '',
+            'spins': '',
+            'timeSec': '',
             'readingComments': ''
           })
         }

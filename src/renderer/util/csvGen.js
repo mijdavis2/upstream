@@ -70,7 +70,7 @@ Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
     const const2 = this.siteData.siteVisitSummary['Meter type'].const2
     const numerator = `E${st + 23}`
     const denom = `F${st + 23}`
-    return `=IF(${numerator}>0,${const1}*(${numerator}/${denom})+${const2},0)`
+    return `"=IF(${numerator}>0,${const1}*(${numerator}/${denom})+${const2},0)"`
   }
   getStFt (st) {
     return `=C${st + 23} - C23`
