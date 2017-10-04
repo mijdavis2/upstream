@@ -114,9 +114,10 @@
           'Grade control': '',
           'Left bank conditions': '',
           'Flow consistency': '',
-          'Gauge operating': '',
+          'Gauge operating': false,
           'Rated': '',
-          'Data downloaded': ''
+          'Data downloaded': false,
+          'Comments on rating': ''
         }
       },
       meterTypes: [

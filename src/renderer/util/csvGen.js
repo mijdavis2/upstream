@@ -15,10 +15,10 @@ St,Clock,"Tape, ft",Max Depth,Spins,"Time, Sec",ft/sec,"station, ft","width, ft"
     const const1 = siteVisitSummary['Meter type'].const1
     const const2 = siteVisitSummary['Meter type'].const2
     const SITE_ID = this.siteData.siteId
-    const SPIN_TEST_AT_START = siteVisitSummary['Spin test at start']
+    const SPIN_TEST_AT_START = siteVisitSummary['Spin test at start'] ? 'Yes' : 'No'
     const DATE = siteVisitSummary['Date']
     const START_TIME = siteVisitSummary['Start time']
-    const SPIN_TEST_AT_END = siteVisitSummary['Spin test at end']
+    const SPIN_TEST_AT_END = siteVisitSummary['Spin test at end'] ? 'Yes' : 'No'
     const STAFF_PLATE_READING = siteVisitSummary['Staff Plate Reading']
     const FIELD_CREW_MEASURE = siteVisitSummary['Field crew taking measurements']
     const MEASUREMENT_N = siteVisitSummary['Measurement #']
@@ -33,8 +33,8 @@ St,Clock,"Tape, ft",Max Depth,Spins,"Time, Sec",ft/sec,"station, ft","width, ft"
     const GRADE_CONTROL = channelSummary['Grade control']
     const LEFT_BANK_CONDITIONS = channelSummary['Left bank conditions']
     const FLOW_CONSISTENCY = channelSummary['Flow consistency']
-    const GAUGE_OPERATING = channelSummary['Gauge operating']
-    const DATA_DOWNLOAD = channelSummary['Data downloaded']
+    const GAUGE_OPERATING = channelSummary['Gauge operating'] ? 'Yes' : 'No'
+    const DATA_DOWNLOAD = channelSummary['Data downloaded'] ? 'Yes' : 'No'
     const RATED = channelSummary['Rated']
     const COMMENTS_ON_RATING = channelSummary['Comments on rating']
     return `Conservation Hydrology,Created via UpStream,,,
