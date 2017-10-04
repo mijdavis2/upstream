@@ -10,6 +10,7 @@
     "build:dir": "node .electron-vue/build.js && electron-builder -wl --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
+    "build:win": "electron-builder -w",
     "dev": "node .electron-vue/dev-runner.js",
     "e2e": "npm run pack && mocha test/e2e",
     "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
@@ -23,7 +24,7 @@
   },
   "build": {
     "productName": "UpStream",
-    "appId": "org.simulatedgreg.electron-vue",
+    "appId": "com.mijdavis2.upstream",
     "directories": {
       "output": "build"
     },
@@ -49,7 +50,8 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "target": "appx"
     },
     "linux": {
       "icon": "build/icons"
@@ -91,6 +93,7 @@
     "devtron": "^1.1.0",
     "electron": "^1.7.2",
     "electron-builder": "^19.18.1",
+    "electron-builder-squirrel-windows": "^19.30.3",
     "electron-debug": "^1.1.0",
     "electron-devtools-installer": "^2.0.1",
     "eslint": "^3.13.1",
