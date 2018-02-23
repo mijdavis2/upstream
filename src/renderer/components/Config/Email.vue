@@ -12,7 +12,7 @@
         <dl>
           <dt><label>My Google Email</label></dt>
           <dd>
-            <input class="form-control input-block" type="text" maxlength="30"
+            <input class="form-control input-block" type="text"
                    v-model="myEmail"
                    placeholder="me@gmail.com">
           </dd>
@@ -21,7 +21,7 @@
         <dl>
           <dt><label>Password</label></dt>
           <dd>
-            <input class="form-control input-block" type="password" maxlength="30"
+            <input class="form-control input-block" type="password"
                    id="myPassword"
                    placeholder="secure password">
           </dd>
