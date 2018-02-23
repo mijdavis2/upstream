@@ -1,6 +1,6 @@
 {
   "name": "upstream",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "mijdavis2",
   "description": "Streamflow calc utility for Trout Unlimited",
   "license": "MIT",
@@ -68,6 +68,7 @@
     "vue-floatthead": "^0.0.5",
     "vue-router": "^2.5.3",
     "vue-scrollto": "^2.7.2",
+    "vue-sweetalert": "^0.1.18",
     "vue2-scrollspy": "^1.1.2",
     "vuex": "^2.3.1"
   },
