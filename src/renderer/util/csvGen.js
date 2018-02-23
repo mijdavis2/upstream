@@ -4,8 +4,8 @@ export default class CsvGen {
     this.flowData = flowData
     console.log(this.flowData)
     this.results = results
-    this.resultHeadings = `RESULTS,,,,,,,,,,,,
-St,Clock,"Tape, ft",Max Depth,Spins,"Time, Sec",ft/sec,"station, ft","width, ft",q,Qcol,Perecent of flow,Reading Comments`
+    this.resultHeadings = `RESULTS;;;;;;;;;;;;
+St;Clock;"Tape, ft";Max Depth;Spins;"Time, Sec";ft/sec;"station, ft";"width, ft";q;Qcol;Perecent of flow;Reading Comments`
   }
   getSiteSummary () {
     const siteVisitSummary = this.siteData.siteVisitSummary
@@ -37,30 +37,30 @@ St,Clock,"Tape, ft",Max Depth,Spins,"Time, Sec",ft/sec,"station, ft","width, ft"
     const DATA_DOWNLOAD = channelSummary['Data downloaded'] ? 'Yes' : 'No'
     const RATED = channelSummary['Rated']
     const COMMENTS_ON_RATING = channelSummary['Comments on rating']
-    return `Conservation Hydrology,Created via UpStream,,,
-Trout Unlimited,https://github.com/mijdavis2/upstream,,,
-,,,,
-SITE VISIT SUMMARY,,,,
-Site name,${SITE_NAME},,Meter Type:,${METER_TYPE}
-Site ID,${SITE_ID},,Meter Equation:,${const1}*(n/x)+${const2}
-Date and start time,${DATE} ${START_TIME},,Spin Test at start (Y/N):,${SPIN_TEST_AT_START}
-Field crew taking measurement,${FIELD_CREW_MEASURE},,Spin Test at end (pass?):,${SPIN_TEST_AT_END}
-Field crew taking notes,${FIELD_CREW_NOTES},,Measurement #,${MEASUREMENT_N}
-Site Comments:,${SITE_COMMENTS},,Atmospheric Cond:,${ATMOSPHERE}
-Site Repairs Needed:,${SITE_REPAIRS_NEEDED},,Staff Plate Reading (Depth),${STAFF_PLATE_READING}
-,,,,
-Channel Summary:,,,,
-Cross Section Location:,${CROSS_SECTION_LOCATION},,Start Edge,${START_EDGE}
-Cross Section Substrate:,${CROSS_SECTION_SUBSTRATE},,Right bank conditions:,${RIGHT_BANK_CONDITIONS}
-Grade Control:,${GRADE_CONTROL},,Left bank conditions,${LEFT_BANK_CONDITIONS}
-Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
-,,,Data Downloaded:,${DATA_DOWNLOAD}
-"Rated:",${RATED},,Comments on Rating:,${COMMENTS_ON_RATING}
+    return `Conservation Hydrology;Created via UpStream;;;
+Trout Unlimited;https://github.com/mijdavis2/upstream;;;
+;;;;
+SITE VISIT SUMMARY;;;;
+Site name;${SITE_NAME};;Meter Type:;${METER_TYPE}
+Site ID;${SITE_ID};;Meter Equation:;${const1}*(n/x)+${const2}
+Date and start time;${DATE} ${START_TIME};;Spin Test at start (Y/N):;${SPIN_TEST_AT_START}
+Field crew taking measurement;${FIELD_CREW_MEASURE};;Spin Test at end (pass?):;${SPIN_TEST_AT_END}
+Field crew taking notes;${FIELD_CREW_NOTES};;Measurement #;${MEASUREMENT_N}
+Site Comments:;${SITE_COMMENTS};;Atmospheric Cond:;${ATMOSPHERE}
+Site Repairs Needed:;${SITE_REPAIRS_NEEDED};;Staff Plate Reading (Depth);${STAFF_PLATE_READING}
+;;;;
+Channel Summary:;;;;
+Cross Section Location:;${CROSS_SECTION_LOCATION};;Start Edge;${START_EDGE}
+Cross Section Substrate:;${CROSS_SECTION_SUBSTRATE};;Right bank conditions:;${RIGHT_BANK_CONDITIONS}
+Grade Control:;${GRADE_CONTROL};;Left bank conditions;${LEFT_BANK_CONDITIONS}
+Flow Consistency:;${FLOW_CONSISTENCY};;Gauge Operating:;${GAUGE_OPERATING}
+;;;Data Downloaded:;${DATA_DOWNLOAD}
+"Rated:";${RATED};;Comments on Rating:;${COMMENTS_ON_RATING}
 `
   }
   discharge () {
     const cell = this.flowData.length + 21
-    return `,,,,,,,,Total Discharge:,,=SUM(K23:K${cell}),,`
+    return `;;;;;;;;Total Discharge:;;=SUM(K23:K${cell});;`
   }
   getFtPerSec (st) {
     if (st === 0 || st === this.flowData.length - 1) {
@@ -97,7 +97,7 @@ Flow Consistency:,${FLOW_CONSISTENCY},,Gauge Operating:,${GAUGE_OPERATING}
     return `=K${st + 23}/$K$${this.flowData.length + 23}`
   }
   genRow (st) {
-    return `${st},${this.flowData[st].clock},${this.flowData[st].tapeFt},${this.flowData[st].maxDepth},${this.flowData[st].spins},${this.flowData[st].timeSec},${this.getFtPerSec(st)},${this.getStFt(st)},${this.getWidthFt(st)},${this.getQ(st)},${this.getQcol(st)},${this.getPercentOfFlow(st)},${this.flowData[st].readingComments}`
+    return `${st};${this.flowData[st].clock};${this.flowData[st].tapeFt};${this.flowData[st].maxDepth};${this.flowData[st].spins};${this.flowData[st].timeSec};${this.getFtPerSec(st)};${this.getStFt(st)};${this.getWidthFt(st)};${this.getQ(st)};${this.getQcol(st)};${this.getPercentOfFlow(st)};${this.flowData[st].readingComments}`
   }
   getRows () {
     let current = 0

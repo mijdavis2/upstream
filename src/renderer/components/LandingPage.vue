@@ -20,7 +20,7 @@
             <li>Calc discharge and generate csv files.</li>
             <li>Auto-fill dates and times.</li>
             <li>Temp save on every keystroke.</li>
-            <li>Store sites and site IDs (via 'Config').</li>
+            <li>Store sites and site IDs (via <router-link to="/config">Config</router-link>).</li>
             <li>Email csv report from app (beta).</li>
           </ul>
           <br>
@@ -35,6 +35,10 @@
         <div class="doc csv-instructions">
           <h2 class="alt-h2 mb-1"><b>Importing Generated CSV</b></h2>
           <p>
+            <b class="text-red">v2.0.0 UPDATE: </b>reports are now <i>semicolon separated</i>.
+            Be sure to un-select "Comma" under "Separator Options" when importing reports to excel.
+          </p>
+          <p>
             When importing csv files created by Upstream use the following settings:
           </p>
           <ul class="ml-3">
@@ -44,8 +48,6 @@
               <ul>
                 <li>Separated by
                   <ul>
-                    <li>Tab</li>
-                    <li>Comma</li>
                     <li>Semicolon</li>
                   </ul>
                 </li>

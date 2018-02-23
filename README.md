@@ -38,14 +38,15 @@ and download the appropriate package:
 
 ## CSV generation
 
+**v2.0.0 UPDATE**: reports are now _semicolon_ separated to support commas in text fields. 
+Be sure to un-select `Comma` under Separator Options when importing in excel.
+
 When importing csv files created by **Upstream** use the following settings:
 
 - Character set: `Unicode (UTF-8)`
 - From row: `1`
 - Separator Options:
     - `Separated by`
-        - `Tab`
-        - `Comma`
         - `Semicolon`
 - Text Delimiter: `"`
 
