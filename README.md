@@ -59,7 +59,7 @@ This project utilizes vuex for state storage and GitHub's [primer-css framework]
 
 ### Requirements
 
-- node 7+
+- node 8.2.1 (version of node used by electron)
 - yarn
 
 ``` bash
