@@ -27,10 +27,9 @@ export default new Router({
     },
     {
       path: '/config',
-      name: 'config',
       component: require('@/components/Config'),
       children: [
-        { path: '', redirect: 'sites' },
+        { path: '', name: 'config', redirect: 'sites' },
         { path: 'sites', component: require('@/components/Config/Sites') },
         { path: 'email', component: require('@/components/Config/Email') }
       ]
