@@ -8,6 +8,7 @@
         <router-link to="/load">Load</router-link>
         <router-link to="/config">Config</router-link>
         <a class="time float-right">{{ dateNow }}</a>
+        <a class="float-right" @click="showAlert">quit</a>
       </nav>
     </header>
     <div class="main-container">
@@ -65,6 +66,23 @@
             console.log(data)
           })
         })
+      },
+      showAlert () {
+        this.$swal({
+          title: `Are you sure?`,
+          text: 'Are you sure you want to quit Upstream?',
+          type: 'warning',
+          buttonsStyling: false,
+          showCancelButton: true,
+          cancelButtonClass: 'btn',
+          confirmButtonClass: 'btn btn-danger mr-4',
+          confirmButtonText: 'Quit',
+          showLoaderOnConfirm: true,
+          preConfirm: () => {
+            const {app} = require('electron').remote
+            app.quit()
+          }
+        }).catch(() => {})
       }
     },
     computed: {
