@@ -1,6 +1,6 @@
 {
   "name": "upstream",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "author": "mijdavis2",
   "description": "Streamflow calc utility for Trout Unlimited",
   "license": "MIT",
@@ -101,6 +101,7 @@
     "electron-builder": "^19.18.1",
     "electron-debug": "^1.1.0",
     "electron-devtools-installer": "^2.0.1",
+    "electron-log": "^2.2.14",
     "electron-updater": "^2.21.1",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^10.2.1",
