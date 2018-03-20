@@ -85,6 +85,11 @@ npm run lint
 npm run build
 ```
 
+### Publish
+```
+npm run publish
+```
+
 ## License
 
 **Software:** [MIT (c) 2017](LICENSE)
