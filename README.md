@@ -59,28 +59,30 @@ This project utilizes vuex for state storage and GitHub's [primer-css framework]
 
 ### Requirements
 
-- node 8.2.1 (version of node used by electron)
-- yarn
+- node == 8.2.1 (version of node used by electron)
+- npm >=5.7.1
 
 ``` bash
 # install dependencies
-yarn install
+npm install 
+# OR
+npm ci
 
 # serve with hot reload at localhost:9080
-yarn dev
+npm run dev
 
 # run unit & end-to-end tests
-yarn test
+npm test
 
 # lint all JS/Vue component files in `src/`
-yarn lint
+npm run lint
 
 ```
 
 ### Build
 
 ```
-yarn build
+npm run build
 ```
 
 ## License
