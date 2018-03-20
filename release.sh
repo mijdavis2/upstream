@@ -15,7 +15,7 @@ echo "Pushing release ${VERSION}"
 github-release release \
     --user ${USER} \
     --repo ${REPO} \
-    --tag ${VERSION} \
+    --tag v${VERSION} \
     --name "${VERSION}" \
     --description "$1" \
     --pre-release
@@ -24,7 +24,7 @@ echo "Uploading linux AppImage..."
 github-release upload \
     --user ${USER} \
     --repo ${REPO} \
-    --tag ${VERSION} \
+    --tag v${VERSION} \
     --name "${REPO}-${VERSION}-x86_64.AppImage" \
     --file build/${REPO}-${VERSION}-x86_64.AppImage
 echo "Linux AppImage upload complete!"
@@ -33,7 +33,7 @@ echo "Uploading windows installer..."
 github-release upload \
     --user ${USER} \
     --repo ${REPO} \
-    --tag ${VERSION} \
+    --tag v${VERSION} \
     --name "${PRODUCT_NAME} Win Setup ${VERSION}.exe" \
     --file build/${PRODUCT_NAME}\ Setup\ ${VERSION}.exe
 echo "Windows installer upload complete!"
