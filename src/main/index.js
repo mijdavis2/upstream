@@ -162,9 +162,9 @@ if (process.platform === 'darwin') {
 // })
 
 // Funtion to check the current OS. As of now there is no proper method to add auto-updates to linux platform.
-function isWindowsOrmacOS () {
-  return process.platform === 'darwin' || process.platform === 'win32';
-}
+// function isWindowsOrmacOS () {
+//   return process.platform === 'darwin' || process.platform === 'win32'
+// }
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
@@ -177,8 +177,8 @@ app.on('ready', () => {
   const page = mainWindow.webContents
 
   page.once('did-frame-finish-load', () => {
-    const checkOS = isWindowsOrmacOS()
-    if (checkOS && process.env.NODE_ENV === 'production') {
+    // const checkOS = isWindowsOrmacOS()
+    if (process.env.NODE_ENV === 'production') {
       // Initate auto-updates on macOs and windows
       appUpdater()
     }
