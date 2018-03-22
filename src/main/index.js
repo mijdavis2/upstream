@@ -166,55 +166,8 @@ app.on('ready', () => {
   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
 })
 
-log.info('App starting...')
-//
-// let win
-//
-function sendStatusToWindow (text) {
-  log.info(text)
-  // win.webContents.send('message', text)
-}
-// function createDefaultWindow () {
-//   win = new BrowserWindow()
-//   win.webContents.openDevTools()
-//   win.on('closed', () => {
-//     win = null
-//   })
-//   win.loadURL(`file://${__dirname}/version.html#v${app.getVersion()}`)
-//   return win
-// }
-autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('Checking for update...')
-})
-autoUpdater.on('update-available', (ev, info) => {
-  sendStatusToWindow('Update available.')
-})
-autoUpdater.on('update-not-available', (ev, info) => {
-  sendStatusToWindow('Update not available.')
-})
-autoUpdater.on('error', (ev, err) => {
-  sendStatusToWindow('Error in auto-updater.')
-})
-autoUpdater.on('download-progress', (ev, progressObj) => {
-  sendStatusToWindow('Download progress...')
-})
-autoUpdater.on('update-downloaded', (ev, info) => {
-  sendStatusToWindow('Update downloaded will install in 5 seconds')
-})
-// app.on('ready', function () {
-//   // Create the Menu
-//   const menu = Menu.buildFromTemplate(template)
-//   Menu.setApplicationMenu(menu)
-//
-//   createDefaultWindow()
-// })
-// app.on('window-all-closed', () => {
-//   app.quit()
-// })
-
 const { dialog } = require('electron')
 
-// let updater
 autoUpdater.autoDownload = false
 
 autoUpdater.on('error', (error) => {
@@ -224,41 +177,25 @@ autoUpdater.on('error', (error) => {
 autoUpdater.on('update-available', () => {
   dialog.showMessageBox({
     type: 'info',
-    title: 'Found Updates',
-    message: 'Found updates, do you want update now?',
+    title: 'Upstream updater',
+    message: 'Found an Upstream update, do you want update now?',
     buttons: ['Sure', 'No']
   }, (buttonIndex) => {
     if (buttonIndex === 0) {
+      dialog.showMessageBox({
+        title: 'Upstream updater',
+        message: 'Download in progress...'
+      }, (buttonIndex) => { console.log(buttonIndex) })
       autoUpdater.downloadUpdate()
-    } else {
-      // updater.enabled = true
-      // updater = null
     }
   })
 })
 
-autoUpdater.on('update-not-available', () => {
-  dialog.showMessageBox({
-    title: 'No Updates',
-    message: 'Current version is up-to-date.'
-  })
-  // updater.enabled = true
-  // updater = null
-})
-
 autoUpdater.on('update-downloaded', () => {
   dialog.showMessageBox({
-    title: 'Install Updates',
+    title: 'Upstream updater',
     message: 'Updates downloaded, application will be quit for update...'
   }, () => {
     setImmediate(() => autoUpdater.quitAndInstall())
   })
 })
-
-// export this to MenuItem click callback
-function checkForUpdates (menuItem, focusedWindow, event) {
-  // updater = menuItem
-  // updater.enabled = false
-  autoUpdater.checkForUpdates()
-}
-module.exports.checkForUpdates = checkForUpdates
