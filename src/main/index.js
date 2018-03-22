@@ -167,20 +167,5 @@ if (process.platform === 'darwin') {
 // }
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({
-    height: 600,
-    width: 600
-  })
-
-  mainWindow.loadURL('https://github.com')
-
-  const page = mainWindow.webContents
-
-  page.once('did-frame-finish-load', () => {
-    // const checkOS = isWindowsOrmacOS()
-    if (process.env.NODE_ENV === 'production') {
-      // Initate auto-updates on macOs and windows
-      appUpdater()
-    }
-  })
+  if (process.env.NODE_ENV === 'production') appUpdater()
 })
