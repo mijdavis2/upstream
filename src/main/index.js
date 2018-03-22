@@ -183,8 +183,8 @@ autoUpdater.on('update-available', () => {
   }, (buttonIndex) => {
     if (buttonIndex === 0) {
       dialog.showMessageBox({
-        title: 'Upstream updater',
-        message: 'Download in progress...'
+        title: 'Upstream update',
+        message: 'Upsteam download in progress. Please wait...'
       }, (buttonIndex) => { console.log(buttonIndex) })
       autoUpdater.downloadUpdate()
     }
@@ -193,8 +193,8 @@ autoUpdater.on('update-available', () => {
 
 autoUpdater.on('update-downloaded', () => {
   dialog.showMessageBox({
-    title: 'Upstream updater',
-    message: 'Updates downloaded, application will be quit for update...'
+    title: 'Upstream updated',
+    message: 'Updates downloaded, application will now restart...'
   }, () => {
     setImmediate(() => autoUpdater.quitAndInstall())
   })
