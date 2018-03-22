@@ -214,11 +214,11 @@ autoUpdater.on('update-downloaded', (ev, info) => {
 
 const { dialog } = require('electron')
 
-let updater
+// let updater
 autoUpdater.autoDownload = false
 
 autoUpdater.on('error', (error) => {
-  dialog.showErrorBox('Error: ', error == null ? 'unknown' : (error.stack || error).toString())
+  dialog.showErrorBox('Error: ', error === null ? 'unknown' : (error.stack || error).toString())
 })
 
 autoUpdater.on('update-available', () => {
@@ -231,8 +231,8 @@ autoUpdater.on('update-available', () => {
     if (buttonIndex === 0) {
       autoUpdater.downloadUpdate()
     } else {
-      updater.enabled = true
-      updater = null
+      // updater.enabled = true
+      // updater = null
     }
   })
 })
@@ -242,8 +242,8 @@ autoUpdater.on('update-not-available', () => {
     title: 'No Updates',
     message: 'Current version is up-to-date.'
   })
-  updater.enabled = true
-  updater = null
+  // updater.enabled = true
+  // updater = null
 })
 
 autoUpdater.on('update-downloaded', () => {
