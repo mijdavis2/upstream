@@ -30,7 +30,7 @@ UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"
 Go to the [releases page](https://github.com/mijdavis2/upstream/releases)
 and download the appropriate package:
     
-- **Windows**: `UpStream.Win.Setup.[version].exe`
+- **Windows**: `UpStream Setup [version].exe`
   - double click after download to install - ignore any windows store warnings
 
 - **Linux**: `upstream-[version]-x86_64.AppImage` 
