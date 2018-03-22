@@ -1,7 +1,7 @@
 'use strict'
 
 import { app, BrowserWindow } from 'electron'
-import { autoUpdater } from 'electron-updater'
+const { appUpdater } = require('./updater')
 
 /**
  * Set `__static` path to static files in production
@@ -154,9 +154,33 @@ if (process.platform === 'darwin') {
  * support auto updating. Code Signing with a valid certificate is required.
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
-autoUpdater.on('update-downloaded', () => {
-  autoUpdater.quitAndInstall()
-})
+// autoUpdater.on('update-downloaded', () => {
+//   autoUpdater.quitAndInstall()
+// })
+// app.on('ready', () => {
+//   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
+// })
+
+// Funtion to check the current OS. As of now there is no proper method to add auto-updates to linux platform.
+function isWindowsOrmacOS () {
+  return process.platform === 'darwin' || process.platform === 'win32';
+}
+
 app.on('ready', () => {
-  if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
+  mainWindow = new BrowserWindow({
+    height: 600,
+    width: 600
+  })
+
+  mainWindow.loadURL('https://github.com')
+
+  const page = mainWindow.webContents
+
+  page.once('did-frame-finish-load', () => {
+    const checkOS = isWindowsOrmacOS()
+    if (checkOS && process.env.NODE_ENV === 'production') {
+      // Initate auto-updates on macOs and windows
+      appUpdater()
+    }
+  })
 })
