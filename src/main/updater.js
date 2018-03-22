@@ -7,7 +7,7 @@ const platform = os.platform() + '_' + os.arch()  // usually returns darwin_64
 const updaterFeedURL = 'http://zulipdesktop.herokuapp.com/update/' + platform + '/' + version
 // replace updaterFeedURL with http://yourappname.herokuapp.com
 
-function appUpdater() {
+function appUpdater () {
   autoUpdater.setFeedURL(updaterFeedURL)
   /* Log whats happening
    TODO send autoUpdater events to renderer so that we could console log it in developer tools
