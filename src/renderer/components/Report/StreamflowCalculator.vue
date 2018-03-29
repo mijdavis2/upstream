@@ -15,13 +15,13 @@
               <input class="stream-input" :id="`Clock-${item.station}`" :value="item.clock" @input="updateClock(item.station)">
               <button class="btn btn-small" v-on:click="autofillClock(item.station)">Auto</button></td>
             <td>
-              <input class="stream-input" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
+              <input type="number" class="stream-input" :id="`TapeFt-${item.station}`" :value="item.tapeFt" @input="updateTapeFt(item.station)"></td>
             <td>
-              <input class="stream-input" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></td>
+              <input type="number" class="stream-input" :id="`MaxDepth-${item.station}`" :value="item.maxDepth" @input="updateMaxDepth(item.station)"></td>
             <td>
-              <input class="stream-input" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></td>
+              <input type="number" class="stream-input" :id="`Spins-${item.station}`" :value="item.spins" @input="updateSpins(item.station)"></td>
             <td>
-              <input class="stream-input" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></td>
+              <input type="number" class="stream-input" :id="`TimeSec-${item.station}`" :value="item.timeSec" @input="updateTimeSec(item.station)"></td>
             <td>
               <textarea :id="`ReadingComments-${item.station}`" :value="item.readingComments" @input="updateReadingComments(item.station)"></textarea></td>
           </tr>

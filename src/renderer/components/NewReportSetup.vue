@@ -23,11 +23,11 @@
             <div>
               <dl class="form-group mr-2">
                 <dt><label>Start Bank</label></dt>
-                <dd><input v-model.lazy="startBank"></dd>
+                <dd><input type="number" v-model.lazy="startBank"></dd>
               </dl>
               <dl class="form-group">
                 <dt><label>End Bank</label></dt>
-                <dd><input v-model.lazy="endBank"></dd>
+                <dd><input type="number" v-model.lazy="endBank"></dd>
               </dl>
             </div>
 
