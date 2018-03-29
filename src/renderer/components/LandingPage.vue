@@ -86,7 +86,6 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
-//  import { autoUpdater } from 'electron-updater'
 
   export default {
     name: 'landing-page',
@@ -96,30 +95,6 @@
         this.$electron.shell.openExternal(link)
       }
     }
-//    computed: {
-//      update: {
-//        get () {
-//          autoUpdater.on('checking-for-update', () => {
-//            return 'Checking for update...'
-//          })
-//          autoUpdater.on('update-available', (ev, info) => {
-//            return 'Update available.'
-//          })
-//          autoUpdater.on('update-not-available', (ev, info) => {
-//            return 'Update not available.'
-//          })
-//          autoUpdater.on('error', (ev, err) => {
-//            return 'Error in auto-updater.'
-//          })
-//          autoUpdater.on('download-progress', (ev, progressObj) => {
-//            return 'Download progress...'
-//          })
-//          autoUpdater.on('update-downloaded', (ev, info) => {
-//            return 'Update downloaded; will install in 5 seconds'
-//          })
-//        }
-//      }
-//    }
   }
 </script>
 
