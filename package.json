@@ -1,9 +1,14 @@
 {
   "name": "upstream",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": "mijdavis2",
   "description": "Streamflow calc utility for Trout Unlimited",
   "license": "MIT",
+  "engines": {
+    "node": "8.2.1",
+    "npm": ">=5.3.0"
+  },
+  "engineStrict": true,
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder -wl",

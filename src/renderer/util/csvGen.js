@@ -37,7 +37,8 @@ St;Clock;"Tape, ft";Max Depth;Spins;"Time, Sec";ft/sec;"station, ft";"width, ft"
     const DATA_DOWNLOAD = channelSummary['Data downloaded'] ? 'Yes' : 'No'
     const RATED = channelSummary['Rated']
     const COMMENTS_ON_RATING = channelSummary['Comments on rating']
-    return `Conservation Hydrology;Created via UpStream;;;
+    return `sep=;
+Conservation Hydrology;Created via UpStream;;;
 Trout Unlimited;https://github.com/mijdavis2/upstream;;;
 ;;;;
 SITE VISIT SUMMARY;;;;
