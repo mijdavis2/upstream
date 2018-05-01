@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# DEPRICATED for new auto-publish / auto-update libs
+
 # TODO: use cmd line args for pre-release option
 
 VERSION=$(cat package.json | jq -r '.version')
