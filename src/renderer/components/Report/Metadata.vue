@@ -4,10 +4,10 @@
       <h1>{{ siteData.siteName }} - {{ siteData.siteId }}</h1>
       <form>
         <div v-scroll-spy="currentPosition">
-          <h3 id="m1"class="mt-3">Site Visit Summary</h3><hr>
+          <h3 id="m1" class="mt-3">Site Visit Summary</h3><hr>
           <a id="m2" class="btn btn-small mt-1" v-on:click="autofillDate">Autofill Datetime</a>
           <div id="m3" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(siteData.siteVisitSummary)"
+            <dl v-for="item of Object.keys(siteData.siteVisitSummary)" :key="item"
                 v-if="item !== 'Meter type'" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
               <dd v-if="['Spin test at start', 'Spin test at end'].includes(item)">
@@ -30,7 +30,7 @@
               <dd>
                 <select class="form-select form-control"
                         v-model="siteData.siteVisitSummary['Meter type']">
-                  <option v-for="meter in meterTypes" :value="meter">{{ meter.name }}</option>
+                  <option v-for="meter in meterTypes" :value="meter" :key="meter">{{ meter.name }}</option>
                 </select>
               </dd>
             </dl>
@@ -38,7 +38,7 @@
 
           <h3 id="m4" class="mt-3">Channel Summary</h3><hr>
           <div id="m5" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(siteData.channelSummary)"
+            <dl v-for="item of Object.keys(siteData.channelSummary)" :key="item"
                 v-if="item !== 'Comments on rating'" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
               <dd v-if="!['Gauge operating', 'Data downloaded'].includes(item)">
@@ -59,7 +59,7 @@
 
           <h3 id="m6" class="mt-3">Comments</h3><hr>
           <div id="m7" class="section flex flex-between flex-wrap">
-            <dl v-for="item of Object.keys(siteData.comments)" class="form-group" style="width: 45%;">
+            <dl v-for="item of Object.keys(siteData.comments)" :key="item" class="form-group" style="width: 45%;">
               <dt><label>{{ item }}</label></dt>
               <dd><textarea class="form-control" type="text" v-model="siteData.comments[item]"></textarea></dd>
             </dl>

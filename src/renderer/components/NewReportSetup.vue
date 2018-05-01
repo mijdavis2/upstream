@@ -11,7 +11,7 @@
               <dt><label>Site</label></dt>
               <dd>
                 <select class="form-select" v-model="site">
-                  <option v-for="site in sites" :value="site">{{ site.id }} - {{ site.name }}
+                  <option v-for="site in sites" :value="site" :key="site.id">{{ site.id }} - {{ site.name }}
                   </option>
                 </select>
                 <span class="input-group-button">
@@ -35,7 +35,7 @@
               <dt><label>Number of Stations</label></dt>
               <dd>
                 <select class="form-select" v-model="selectedConfig" @click="getFlowData()">
-                  <option v-for="config in stationConfigs" :value="config">
+                  <option v-for="config in stationConfigs" :value="config" :key="config.stations">
                     {{ config.stations - 1 }} stations at {{ config.spacing }}
                   </option>
                 </select>
@@ -57,7 +57,7 @@
       <div class="station-tape-ft card p-3 bg-faded" v-if="flowData.length > 0 && selectedConfig">
         <p>Station tapeFt Preview</p>
         <ol start="0">
-          <li v-for="config in flowData">
+          <li v-for="config in flowData" :key="config.station">
             {{ config.tapeFt }}
           </li>
         </ol>
