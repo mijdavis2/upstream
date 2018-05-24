@@ -30,7 +30,7 @@
               <dd>
                 <select class="form-select form-control"
                         v-model="siteData.siteVisitSummary['Meter type']">
-                  <option v-for="meter in meterTypes" :value="meter" :key="meter">{{ meter.name }}</option>
+                  <option v-for="meter in meterTypes" :value="meter" :key="meter.name">{{ meter.name }}</option>
                 </select>
               </dd>
             </dl>

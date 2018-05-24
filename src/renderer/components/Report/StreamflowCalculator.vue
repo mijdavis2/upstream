@@ -5,11 +5,11 @@
       <float-thead-table class="table table-sm table-striped table-bordered">
         <thead class="thead-inverse">
           <tr>
-            <th v-for="field of fields">{{ field }}</th>
+            <th v-for="field of fields" :key="field">{{ field }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item of items">
+          <tr v-for="item of items" :key="item.station">
             <th scope="row">{{ item.station }}</th>
             <td>
               <input class="stream-input" :id="`Clock-${item.station}`" :value="item.clock" @input="updateClock(item.station)">
@@ -39,11 +39,11 @@
       <float-thead-table class="table navbar-toggleable-md table-sm table-striped table-bordered">
         <thead class="thead-inverse">
         <tr>
-          <th v-for="field of resultFields">{{ field }}</th>
+          <th v-for="field of resultFields" :key="field">{{ field }}</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="item of results">
+        <tr v-for="item of results" :key="item.station">
           <th scope="row">{{ item.station }}</th>
           <td>{{ Math.round(parseFloat(item.ftPerSec) * 100) / 100 }}</td>
           <td>{{ Math.round(parseFloat(item.stationFt) * 100) / 100 }}</td>
@@ -112,6 +112,10 @@
         })
       },
       updateMaxDepth (station) {
+        let t = document.getElementById(`Clock-${station}`).value
+        if (!t || t === '') {
+          this.autofillClock(station)
+        }
         let val = document.getElementById(`MaxDepth-${station}`).value
         if (!isNaN(val) || val === '') {
           this.$store.commit('updateMaxDepth', {
