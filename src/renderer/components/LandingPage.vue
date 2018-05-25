@@ -17,6 +17,10 @@
           <h2 class="alt-h2 mb-1"><b>Features</b></h2>
           <ul class="ml-3">
             <li>Generate steam flow forms from start bank, end bank, and station count.</li>
+            <li><b>v2.5+</b>: maxDepth input now auto-fills time on first input.
+              Auto-fill time button still exists for use
+              in case depth is input by accident
+              or when moving station is required after starting data collection</li>
             <li>Calc discharge and generate csv files.</li>
             <li>Auto-fill dates and times.</li>
             <li>Temp save on every keystroke.</li>
