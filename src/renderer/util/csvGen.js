@@ -12,6 +12,7 @@ St;Clock;"Tape, ft";Max Depth;Spins;"Time, Sec";ft/sec;"station, ft";"width, ft"
     const channelSummary = this.siteData.channelSummary
     const SITE_NAME = this.siteData.siteName
     const METER_TYPE = siteVisitSummary['Meter type'].name
+    const METER_NUMBER = this.siteVisitSummary['Meter number']
     const const1 = siteVisitSummary['Meter type'].const1
     const const2 = siteVisitSummary['Meter type'].const2
     const SITE_ID = this.siteData.siteId
@@ -43,7 +44,7 @@ Trout Unlimited;https://github.com/mijdavis2/upstream;;;
 ;;;;
 SITE VISIT SUMMARY;;;;
 Site name;${SITE_NAME};;Meter Type:;${METER_TYPE}
-Site ID;${SITE_ID};;Meter Equation:;${const1}*(n/x)+${const2}
+Site ID;${SITE_ID};;Meter Number:;${METER_NUMBER};;Meter Equation:;${const1}*(n/x)+${const2}
 Date and start time;${DATE} ${START_TIME};;Spin Test at start (Y/N):;${SPIN_TEST_AT_START}
 Field crew taking measurement;${FIELD_CREW_MEASURE};;Spin Test at end (pass?):;${SPIN_TEST_AT_END}
 Field crew taking notes;${FIELD_CREW_NOTES};;Measurement #;${MEASUREMENT_N}
