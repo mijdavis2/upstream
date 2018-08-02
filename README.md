@@ -2,6 +2,8 @@
 
 UpStream is a stream flow calc utility designed for <a href="http://www.tu.org/"><b>Trout Unlimited</b></a>, a national non-profit organization whose mission is to "conserve, protect and restore North America's coldwater fisheries and their watersheds".
 
+NOTE: Worked perfect on Windows 8 tablets. Windows 10 introduced some very wonky behavior such as single click submissions lagging and windows keyboard popping up after scrolling. The app still works but is more annoying to use. Currently investigating.
+
 **Features**:
 - Generate comprehensive stream flow csv reports through a feature rich cross-platform native app.
 - Auto generate data input forms from start bank, end bank, and desired number of stations.
