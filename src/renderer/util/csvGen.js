@@ -12,7 +12,7 @@ St;Clock;"Tape, ft";Max Depth;Spins;"Time, Sec";ft/sec;"station, ft";"width, ft"
     const channelSummary = this.siteData.channelSummary
     const SITE_NAME = this.siteData.siteName
     const METER_TYPE = siteVisitSummary['Meter type'].name
-    const METER_NUMBER = this.siteVisitSummary['Meter number']
+    const METER_NUMBER = siteVisitSummary['Meter number']
     const const1 = siteVisitSummary['Meter type'].const1
     const const2 = siteVisitSummary['Meter type'].const2
     const SITE_ID = this.siteData.siteId
